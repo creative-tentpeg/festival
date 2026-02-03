@@ -13,7 +13,14 @@ export default async function Home() {
       <section className="relative h-screen min-h-150 flex items-center justify-center text-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('/images/bg.jpg')] bg-cover bg-center"></div>
+          <Image
+            src="/images/bg.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-[#000000]/60"></div>
         </div>
 
@@ -24,6 +31,8 @@ export default async function Home() {
               alt="Cabarrus Celtic Festival Title"
               width={400}
               height={200}
+              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 40vw"
+              priority
               className="w-full max-w-xs sm:max-w-sm md:max-w-md h-auto mb-6 sm:mb-8"
             />
             <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-6">
@@ -43,6 +52,8 @@ export default async function Home() {
               alt="Celtic Logo"
               width={550}
               height={550}
+              sizes="(max-width: 640px) 70vw, (max-width: 1024px) 45vw, 40vw"
+              priority
               className="w-full max-w-xs sm:max-w-md md:max-w-2xl h-auto"
             />
           </div>
