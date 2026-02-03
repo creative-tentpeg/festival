@@ -50,14 +50,6 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/calendar"
-                  className="text-white/80 hover:text-white transition-colors flex items-center hover:translate-x-1"
-                >
-                  → Calendar
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/about"
                   className="text-white/80 hover:text-white transition-colors flex items-center hover:translate-x-1"
                 >
