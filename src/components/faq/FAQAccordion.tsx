@@ -46,7 +46,7 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
                   </span>
                   <ChevronDown
                     className={cn(
-                      "w-5 h-5 text-white flex-shrink-0 transition-transform duration-300",
+                      "w-5 h-5 text-white shrink-0 transition-transform duration-300",
                       openId === item.id && "rotate-180",
                     )}
                   />
