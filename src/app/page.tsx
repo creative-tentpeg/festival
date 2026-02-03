@@ -17,14 +17,14 @@ export default async function Home() {
           <div className="absolute inset-0 bg-[#000000]/60"></div>
         </div>
 
-        <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex-1 flex flex-col items-center md:items-start">
+        <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-10 sm:gap-14 md:gap-48 lg:gap-56 pt-28 sm:pt-32 md:pt-0">
+          <div className="flex-1 flex flex-col items-center md:items-start md:mr-6">
             <Image
               src="/images/title-2-1024x415.png"
               alt="Cabarrus Celtic Festival Title"
               width={400}
               height={200}
-              className="w-full h-auto mb-8"
+              className="w-full max-w-xs sm:max-w-sm md:max-w-md h-auto mb-6 sm:mb-8"
             />
             <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-6">
               <a
@@ -37,13 +37,13 @@ export default async function Home() {
               </a>
             </div>
           </div>
-          <div className="flex-1 flex justify-center md:justify-end">
+          <div className="flex-1 flex justify-center md:justify-end md:ml-6">
             <Image
               src="/images/Celtic-Logo-All-white-2-1024x1024.png"
               alt="Celtic Logo"
               width={550}
               height={550}
-              className="w-full max-w-2xl h-auto"
+              className="w-full max-w-xs sm:max-w-md md:max-w-2xl h-auto"
             />
           </div>
         </div>

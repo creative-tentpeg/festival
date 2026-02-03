@@ -32,7 +32,7 @@ export function Navbar() {
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 font-heading tracking-wide",
         scrolled
-          ? "bg-[#115126]/95 backdrop-blur-md shadow-lg py-2"
+          ? "bg-[#125427]/95 backdrop-blur-md shadow-lg py-2"
           : "bg-transparent py-4",
       )}
     >
@@ -85,7 +85,7 @@ export function Navbar() {
           <div className="-mr-2 flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-stone-200 hover:text-white hover:bg-white/10 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-white/10 focus:outline-none"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
@@ -101,7 +101,7 @@ export function Navbar() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "md:hidden absolute top-full left-0 w-full bg-stone-900 shadow-xl transition-all duration-300 ease-in-out origin-top",
+          "md:hidden absolute top-full left-0 w-full bg-[#125427] shadow-xl transition-all duration-300 ease-in-out origin-top",
           isOpen ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0 h-0",
         )}
       >
@@ -113,8 +113,8 @@ export function Navbar() {
               className={cn(
                 "block px-3 py-2 rounded-md text-base font-medium text-center",
                 pathname === link.href
-                  ? "bg-amber-900/50 text-amber-500"
-                  : "text-stone-300 hover:bg-stone-800 hover:text-white",
+                  ? "bg-white/15 text-white"
+                  : "text-white/90 hover:bg-[#0d3a1c] hover:text-white",
               )}
               onClick={() => setIsOpen(false)}
             >
