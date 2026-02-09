@@ -28,7 +28,7 @@ export function FestivalCard({ festival }: FestivalCardProps) {
           </div>
         </div>
         <div className="p-4 flex-1 flex flex-col">
-          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">
+          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-festival-green transition-colors">
             {festival.name}
           </h3>
           <p className="text-sm text-gray-600 mb-4 line-clamp-2">
@@ -37,11 +37,11 @@ export function FestivalCard({ festival }: FestivalCardProps) {
 
           <div className="mt-auto space-y-2 text-sm text-gray-500">
             <div className="flex items-center">
-              <Calendar className="w-4 h-4 mr-2 text-green-600" />
+              <Calendar className="w-4 h-4 mr-2 text-festival-green" />
               <span>{formatDate(festival.startDate)}</span>
             </div>
             <div className="flex items-center">
-              <MapPin className="w-4 h-4 mr-2 text-green-600" />
+              <MapPin className="w-4 h-4 mr-2 text-festival-green" />
               <span>
                 {festival.venueName}, {festival.cityState}
               </span>

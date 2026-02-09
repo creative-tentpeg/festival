@@ -14,7 +14,7 @@ export default async function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/bg.jpg"
+            src="/images/bg-cabarrus.jpg"
             alt=""
             fill
             priority
@@ -26,21 +26,20 @@ export default async function Home() {
 
         <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-10 sm:gap-14 md:gap-48 lg:gap-56 pt-28 sm:pt-32 md:pt-0">
           <div className="flex-1 flex flex-col items-center md:items-start md:mr-6">
-            <Image
-              src="/images/title-2-1024x415.png"
-              alt="Cabarrus Celtic Festival Title"
-              width={400}
-              height={200}
-              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 40vw"
-              priority
-              className="w-full max-w-xs sm:max-w-sm md:max-w-md h-auto mb-6 sm:mb-8"
-            />
+            <h1 className="text-center md:text-left text-4xl sm:text-5xl md:text-6xl font-bold text-white font-heading mb-6 sm:mb-8">
+              Bringing
+              <br />
+              <span className="whitespace-nowrap">Cabarrus County</span>
+              <br />
+              Together!
+            </h1>
             <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-6">
+              {/* eslint-disable-next-line */}
               <a
                 href="https://cabarruscelticfestival.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-linear-to-r from-[#125427] to-green-700 text-white font-heading font-bold tracking-wide rounded-full hover:shadow-xl transition-all duration-300 shadow-lg hover:-translate-y-1"
+                className="px-8 py-4 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-heading font-bold tracking-wide rounded-full hover:from-festival-green-dark hover:to-festival-green-darker hover:shadow-xl transition-all duration-300 shadow-lg hover:-translate-y-1"
               >
                 Visit Official Site
               </a>
@@ -48,11 +47,11 @@ export default async function Home() {
           </div>
           <div className="flex-1 flex justify-center md:justify-end md:ml-6">
             <Image
-              src="/images/Celtic-Logo-All-white-2-1024x1024.png"
+              src="/images/cabarrus-white-logo.png"
               alt="Celtic Logo"
               width={550}
               height={550}
-              sizes="(max-width: 640px) 70vw, (max-width: 1024px) 45vw, 40vw"
+              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 45vw, 40vw"
               priority
               className="w-full max-w-xs sm:max-w-md md:max-w-2xl h-auto"
             />
@@ -69,12 +68,12 @@ export default async function Home() {
                 Upcoming Events
               </h2>
               <p className="mt-2 text-stone-600">
-                Don't miss out on these upcoming festivals
+                Don&apos;t miss out on these upcoming festivals
               </p>
             </div>
             <Link
               href="/festivals"
-              className="hidden sm:flex items-center px-6 py-2 text-white font-medium transition-all rounded-full bg-linear-to-r from-[#125427] to-green-700 hover:shadow-lg hover:-translate-y-1 mt-4 md:mt-0"
+              className="hidden sm:flex items-center px-6 py-2 text-white font-medium transition-all rounded-full bg-linear-to-r from-festival-green to-festival-green-dark hover:from-festival-green-dark hover:to-festival-green-darker hover:shadow-lg hover:-translate-y-1 mt-4 md:mt-0"
             >
               View all events <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

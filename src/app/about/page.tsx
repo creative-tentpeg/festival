@@ -41,7 +41,7 @@ export default async function AboutPage() {
       {/* Content Section */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg prose-green max-w-none">
+          <div className="prose prose-lg max-w-none">
             <div dangerouslySetInnerHTML={{ __html: page.content }} />
           </div>
         </div>

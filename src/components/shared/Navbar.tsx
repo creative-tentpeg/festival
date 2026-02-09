@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -32,7 +33,7 @@ export function Navbar() {
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 font-heading tracking-wide",
         scrolled
-          ? "bg-[#125427]/95 backdrop-blur-md shadow-lg py-2"
+          ? "bg-[#022154]/95 backdrop-blur-md shadow-lg py-2"
           : "bg-transparent py-4",
       )}
     >
@@ -40,22 +41,14 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           <div className="shrink-0 flex items-center">
             <Link href="/" className="group flex items-center space-x-2">
-              <span
-                className={cn(
-                  "text-2xl font-bold transition-colors duration-300",
-                  scrolled ? "text-white" : "text-white",
-                )}
-              >
-                CABARRUS
-              </span>
-              <span
-                className={cn(
-                  "text-2xl font-light transition-colors duration-300",
-                  scrolled ? "text-white" : "text-stone-100",
-                )}
-              >
-                FESTIVALS
-              </span>
+              <Image
+                src="/images/cabarrus-logo.png"
+                alt="Cabarrus Festivals Logo"
+                width={250}
+                height={70}
+                className="h-30 w-auto"
+                priority
+              />
             </Link>
           </div>
 
@@ -66,11 +59,11 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "inline-flex items-center px-1 pt-1 text-sm font-semibold uppercase tracking-wider transition-colors hover:text-green-600",
+                  "inline-flex items-center px-1 pt-1 text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#FFCA00]",
                   pathname === link.href
                     ? scrolled
                       ? "text-white border-b-2 border-white"
-                      : "text-green-700 border-b-2 border-green-700"
+                      : "text-[#FFCA00] border-b-2 border-[#FFCA00]"
                     : scrolled
                       ? "text-white"
                       : "text-white",
@@ -101,7 +94,7 @@ export function Navbar() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "md:hidden absolute top-full left-0 w-full bg-[#125427] shadow-xl transition-all duration-300 ease-in-out origin-top",
+          "md:hidden absolute top-full left-0 w-full bg-[#022154] shadow-xl transition-all duration-300 ease-in-out origin-top",
           isOpen ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0 h-0",
         )}
       >
@@ -114,7 +107,7 @@ export function Navbar() {
                 "block px-3 py-2 rounded-md text-base font-medium text-center",
                 pathname === link.href
                   ? "bg-white/15 text-white"
-                  : "text-white/90 hover:bg-[#0d3a1c] hover:text-white",
+                  : "text-white/90 hover:bg-festival-green hover:text-white",
               )}
               onClick={() => setIsOpen(false)}
             >

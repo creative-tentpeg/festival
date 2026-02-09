@@ -33,10 +33,10 @@ export default function RootLayout({
     <html lang="en" className={`${cinzel.variable} ${lato.variable}`}>
       <body
         suppressHydrationWarning
-        className="min-h-screen flex flex-col font-body bg-background text-foreground antialiased selection:bg-green-100 selection:text-green-900"
+        className="min-h-screen flex flex-col font-body bg-background text-foreground antialiased selection:bg-festival-green/20 selection:text-[#022154]"
       >
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main className="grow">{children}</main>
         <Footer />
       </body>
     </html>

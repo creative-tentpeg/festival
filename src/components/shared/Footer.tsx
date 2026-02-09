@@ -4,13 +4,13 @@ import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-[#125427] text-white">
+    <footer className="bg-[#022154] text-white">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand Section */}
           <div>
             <Image
-              src="/images/Celtic-Logo-All-white-2-1024x1024.png"
+              src="/images/cabarrus-white-logo.png"
               alt="Cabarrus Celtic Logo"
               width={100}
               height={100}
@@ -104,7 +104,7 @@ export function Footer() {
               />
               <button
                 type="submit"
-                className="w-full px-4 py-2 bg-white text-green-700 font-semibold rounded-lg hover:bg-white/90 transition-colors"
+                className="w-full px-4 py-2 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-semibold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
               >
                 Subscribe
               </button>

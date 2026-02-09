@@ -4,10 +4,10 @@
 :root {
   --background: #ffffff;
   --foreground: #1c1917; /* stone-900 */
-  
+
   /* Modern Professional Palette */
-  --color-primary: #15803d; /* green-700 */
-  --color-primary-dark: #14532d; /* green-900 */
+  --color-primary: #e90a3c; /* red */
+  --color-primary-dark: #c70830; /* red-dark */
   --color-accent: #0369a1; /* sky-700 */
   --color-neutral: #f5f5f4; /* stone-100 */
 }
@@ -15,12 +15,14 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --font-heading: var(--font-heading), serif;
   --font-body: var(--font-body), sans-serif;
 
   /* Semantic Colors */
-  --color-festival-green: #15803d;
+  --color-festival-green: #e90a3c;
+  --color-festival-green-dark: #c70830;
+  --color-festival-green-darker: #a00620;
   --color-festival-blue: #0369a1;
 }
 
@@ -30,7 +32,12 @@ body {
   font-family: var(--font-body);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   letter-spacing: -0.02em;
 }

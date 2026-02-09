@@ -58,7 +58,7 @@ export function FestivalFilters() {
   return (
     <div className="mb-12">
       <div className="flex items-center gap-2 mb-6">
-        <Filter className="w-5 h-5 text-[#125427]" />
+        <Filter className="w-5 h-5 text-[#022154]" />
         <h3 className="text-lg font-semibold text-stone-900">
           Filter Festivals
         </h3>
@@ -79,7 +79,7 @@ export function FestivalFilters() {
                 id="category"
                 value={currentCategory}
                 onChange={(e) => handleCategoryChange(e.target.value)}
-                className="block w-full px-4 py-2.5 text-base border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#125427] focus:border-transparent bg-white transition-all"
+                className="block w-full px-4 py-2.5 text-base border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#022154] focus:border-transparent bg-white transition-all"
               >
                 {categories.map((category) => (
                   <option key={category} value={category}>
@@ -103,7 +103,7 @@ export function FestivalFilters() {
                 id="month"
                 value={currentMonth}
                 onChange={(e) => handleMonthChange(e.target.value)}
-                className="block w-full px-4 py-2.5 text-base border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#125427] focus:border-transparent bg-white transition-all"
+                className="block w-full px-4 py-2.5 text-base border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#022154] focus:border-transparent bg-white transition-all"
               >
                 {months.map((month) => (
                   <option key={month} value={month}>
@@ -133,7 +133,7 @@ export function FestivalFilters() {
       {hasActiveFilters && (
         <div className="flex flex-wrap gap-2">
           {currentCategory !== "All" && (
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#125427]/10 text-[#125427] rounded-full text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#022154]/10 text-[#022154] rounded-full text-sm font-medium">
               <span>Category: {currentCategory}</span>
               <button
                 onClick={() => handleCategoryChange("All")}
@@ -144,7 +144,7 @@ export function FestivalFilters() {
             </div>
           )}
           {currentMonth !== "All" && (
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#125427]/10 text-[#125427] rounded-full text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#022154]/10 text-[#022154] rounded-full text-sm font-medium">
               <span>Month: {currentMonth}</span>
               <button
                 onClick={() => handleMonthChange("All")}

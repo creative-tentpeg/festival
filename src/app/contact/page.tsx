@@ -46,7 +46,7 @@ export default async function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-8">
               <div
-                className="prose prose-lg prose-green max-w-none"
+                className="prose prose-lg max-w-none"
                 dangerouslySetInnerHTML={{ __html: page.content }}
               />
               <div className="mt-8">
@@ -58,7 +58,7 @@ export default async function ContactPage() {
                     href="https://www.facebook.com/profile.php?id=61580074512466"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#125427] text-white hover:bg-[#0d3a1c] transition-colors"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-festival-blue text-white hover:bg-festival-green transition-colors"
                     aria-label="Facebook"
                   >
                     <Facebook className="w-5 h-5" />
@@ -67,7 +67,7 @@ export default async function ContactPage() {
                     href="https://www.instagram.com/cabarrusceltic/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#125427] text-white hover:bg-[#0d3a1c] transition-colors"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-festival-blue text-white hover:bg-festival-green transition-colors"
                     aria-label="Instagram"
                   >
                     <Instagram className="w-5 h-5" />
@@ -98,7 +98,7 @@ export default async function ContactPage() {
                     name="name"
                     type="text"
                     placeholder="Your name"
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#125427] focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-festival-blue focus:border-transparent"
                   />
                 </div>
 
@@ -114,7 +114,7 @@ export default async function ContactPage() {
                     name="email"
                     type="email"
                     placeholder="you@email.com"
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#125427] focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-festival-blue focus:border-transparent"
                   />
                 </div>
 
@@ -130,7 +130,7 @@ export default async function ContactPage() {
                     name="subject"
                     type="text"
                     placeholder="How can we help?"
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#125427] focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-festival-blue focus:border-transparent"
                   />
                 </div>
 
@@ -146,13 +146,13 @@ export default async function ContactPage() {
                     name="message"
                     rows={5}
                     placeholder="Write your message..."
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#125427] focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-festival-blue focus:border-transparent"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 text-white font-semibold rounded-lg bg-[#125427] hover:bg-[#0d3a1c] transition-colors"
+                  className="w-full px-6 py-3 text-white font-semibold rounded-lg bg-linear-to-r from-festival-green to-festival-green-dark hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
                 >
                   Send Message
                 </button>

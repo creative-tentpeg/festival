@@ -28,18 +28,29 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
     <div className="space-y-8">
       {items.map((section) => (
         <div key={section.category} className="space-y-4">
-          <h3 className="text-2xl font-bold text-[#125427] font-heading">
+          <h3 className="text-2xl font-bold text-[#022154] font-heading">
             {section.category}
           </h3>
           <div className="space-y-3">
             {section.questions.map((item) => (
               <div
                 key={item.id}
-                className="bg-[#125427] rounded-lg overflow-hidden hover:shadow-lg transition-all"
+                className="bg-festival-green rounded-lg overflow-hidden hover:shadow-lg transition-all"
               >
                 <button
                   onClick={() => toggleOpen(item.id)}
-                  className="w-full px-6 py-4 flex items-center justify-between bg-[#125427] hover:bg-[#0d3a1c] transition-colors"
+                  style={{
+                    background: "linear-gradient(to right, #E90A3C, #C70830)",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.background =
+                      "linear-gradient(to right, #C70830, #A00620)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.background =
+                      "linear-gradient(to right, #E90A3C, #C70830)")
+                  }
+                  className="w-full px-6 py-4 flex items-center justify-between transition-colors"
                 >
                   <span className="font-semibold text-white text-left">
                     {item.question}
@@ -52,7 +63,7 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
                   />
                 </button>
                 {openId === item.id && (
-                  <div className="px-6 py-4 bg-[#0d3a1c] border-t border-white/10 text-white leading-relaxed">
+                  <div className="px-6 py-4 bg-white border border-gray-300 border-t-2 border-t-festival-green text-gray-800 leading-relaxed rounded-b-lg">
                     {item.answer}
                   </div>
                 )}
