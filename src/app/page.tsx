@@ -24,7 +24,7 @@ export default async function Home() {
           <div className="absolute inset-0 bg-[#000000]/60"></div>
         </div>
 
-        <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-10 sm:gap-14 md:gap-48 lg:gap-56 pt-28 sm:pt-32 md:pt-0">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-10 sm:gap-14 md:gap-48 lg:gap-56 pt-28 sm:pt-32 md:pt-0">
           <div className="flex-1 flex flex-col items-center md:items-start md:mr-6">
             <h1 className="text-center md:text-left text-4xl sm:text-5xl md:text-6xl font-bold text-white font-heading mb-6 sm:mb-8">
               Bringing
@@ -45,15 +45,15 @@ export default async function Home() {
               </a>
             </div>
           </div>
-          <div className="flex-1 flex justify-center md:justify-end md:ml-6">
+          <div className="flex justify-center md:justify-end md:ml-6 grow">
             <Image
               src="/images/cabarrus-white-logo.png"
               alt="Celtic Logo"
-              width={550}
-              height={550}
-              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 45vw, 40vw"
+              width={600}
+              height={600}
+              sizes="100vw"
               priority
-              className="w-full max-w-xs sm:max-w-md md:max-w-2xl h-auto"
+              className="w-full max-w-md h-auto"
             />
           </div>
         </div>
