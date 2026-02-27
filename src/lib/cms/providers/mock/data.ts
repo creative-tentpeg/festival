@@ -5,15 +5,8 @@ export const mockPages: Page[] = [
     slug: "about",
     title: "About Us",
     content: `
-      <h2>Celebrating Community</h2>
-      <p>Cabarrus Festivals is a non-profit initiative dedicated to bringing our community together through celebration. We believe that festivals are more than just events; they are the threads that weave the fabric of our society.</p>
-      <p>Founded in 2024, our mission is to showcase the diverse cultures, talents, and flavors that make Cabarrus County unique.</p>
-      <h3>Our Values</h3>
-      <ul>
-        <li>Inclusivity: Events for everyone.</li>
-        <li>Sustainability: Minimizing our environmental impact.</li>
-        <li>Community: Supporting local businesses and artists.</li>
-      </ul>
+      <p>At Cabarrus Festivals, we believe life is better together. Born from a deep love for our community, we are dedicated to bringing the heart of Cabarrus County to life through vibrant, locally-driven festivals that celebrate the people, flavors, and sounds that make this place truly special. From the moment you arrive, you'll be surrounded by the energy of live music, the aromas of incredible local vendors, and the warmth of neighbors becoming friends. Whether you're a longtime local or discovering our community for the first time, there's a place for you here.</p>
+      <p>Our festivals are more than just events, they're traditions in the making. We partner with local artisans, food vendors, musicians, and small businesses to create experiences that reflect the unique spirit of Cabarrus County. Every gathering is designed with families in mind, offering something for every age and walk of life. We're proud to be a gathering place where kids play, laughter fills the air, and community roots grow a little deeper with every festival. Come as a stranger...leave as a neighbor!</p>
     `,
     seo: {
       title: "About Us | Cabarrus Festivals",
@@ -29,11 +22,11 @@ export const mockPages: Page[] = [
       <p>We'd love to hear from you! Whether you're interested in becoming a vendor, sponsor, or volunteer, or just have a question, please reach out.</p>
       <div class="contact-info">
         <p><strong>Email:</strong> info@cabarrusfestivals.com</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Address:</strong> 123 Festival Way, Concord, NC 28025</p>
+        <p><strong>Phone:</strong> 704.997.1964</p>
+        <p><strong>Address:</strong> 57 Union St S., Concord, NC 28025</p>
       </div>
       <h3>Volunteer Opportunities</h3>
-      <p>Join our team and help make the magic happen. Email volunteers@cabarrusfestivals.com for more info.</p>
+      <p>Join our team and help make the magic happen. Email info@cabarrusfestivals.com for more info.</p>
     `,
     seo: {
       title: "Contact Us | Cabarrus Festivals",
@@ -85,6 +78,82 @@ export const mockFestivals: Festival[] = [
       title: "Cabarrus Celtic Festival 2026 | Concord, NC",
       description:
         "Join us May 30, 2026 at Cabarrus Brewing Co. for live Celtic music, food, vendors, and more.",
+    },
+  },
+  {
+    slug: "july-4th-anniversary-festival",
+    name: "July 4th Anniversary Festival",
+    tagline: "Celebrate freedom, community, and summer fun",
+    category: "seasonal",
+    startDate: "2026-07-04T10:00:00Z",
+    endDate: "2026-07-04T22:00:00Z",
+    venueName: "Cabarrus Festivals",
+    venueAddress: "57 Union St S.",
+    cityState: "Concord, NC 28025",
+    heroImage: "/images/bg.jpg",
+    cardImage: "/images/bg.jpg",
+    shortDescription:
+      "A festive July 4th celebration with music, local vendors, family activities, and community spirit.",
+    longDescription:
+      "Join us for the July 4th Anniversary Festival in the heart of Concord. Enjoy local food vendors, live entertainment, family-friendly activities, and a vibrant community celebration.",
+    officialUrl: "#",
+    highlights: [
+      "Live Music",
+      "Family Activities",
+      "Local Vendors",
+      "Community Celebration",
+    ],
+    schedule: [
+      { time: "10:00", title: "Festival Opens" },
+      { time: "14:00", title: "Live Music and Performances" },
+      { time: "22:00", title: "Festival Closes" },
+    ],
+    faqs: [],
+    gallery: ["/images/celtic-1.svg", "/images/celtic-2.svg"],
+    sponsors: [],
+    status: "upcoming",
+    seo: {
+      title: "July 4th Anniversary Festival 2026 | Concord, NC",
+      description:
+        "Celebrate July 4th in Concord with live music, food, and family-friendly festival fun.",
+    },
+  },
+  {
+    slug: "oktoberfest-2026",
+    name: "Oktoberfest!",
+    tagline: "Two days of autumn flavors, music, and celebration",
+    category: "food",
+    startDate: "2026-10-03T11:00:00Z",
+    endDate: "2026-10-04T23:00:00Z",
+    venueName: "Cabarrus Festivals",
+    venueAddress: "57 Union St S.",
+    cityState: "Concord, NC 28025",
+    heroImage: "/images/bg.jpg",
+    cardImage: "/images/bg.jpg",
+    shortDescription:
+      "Celebrate Oktoberfest on October 3rd and 4th, 2026 with food, drinks, music, and community fun.",
+    longDescription:
+      "Oktoberfest! brings two full days of festive energy to Cabarrus County with local vendors, live entertainment, and seasonal favorites in a welcoming community setting.",
+    officialUrl: "#",
+    highlights: [
+      "Live Entertainment",
+      "Seasonal Food & Drinks",
+      "Local Vendors",
+      "Family-Friendly Atmosphere",
+    ],
+    schedule: [
+      { time: "11:00", title: "Day 1 Opens" },
+      { time: "12:00", title: "Music and Vendor Market" },
+      { time: "23:00", title: "Day 2 Closes" },
+    ],
+    faqs: [],
+    gallery: ["/images/celtic-1.svg", "/images/celtic-2.svg"],
+    sponsors: [],
+    status: "upcoming",
+    seo: {
+      title: "Oktoberfest 2026 | Concord, NC",
+      description:
+        "Join Oktoberfest on October 3rd and 4th, 2026 for food, music, and seasonal celebration in Concord.",
     },
   },
 ];

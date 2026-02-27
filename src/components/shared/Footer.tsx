@@ -83,7 +83,13 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-white/80 hover:text-white transition-colors">
                 <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
-                <span>Concord, NC</span>
+                <span className="leading-relaxed">
+                  Cabarrus Festivals
+                  <br />
+                  57 Union St S.
+                  <br />
+                  Concord, NC 28025
+                </span>
               </li>
             </ul>
           </div>

@@ -22,9 +22,9 @@ export default async function AboutPage() {
   return (
     <div className="bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-80 flex items-center justify-center text-center overflow-hidden">
+      <section className="relative h-80 pt-16 flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('/images/bg.jpg')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('/images/about-us.jpg')] bg-cover bg-center"></div>
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
 
@@ -41,7 +41,7 @@ export default async function AboutPage() {
       {/* Content Section */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none text-justify [&_p]:text-justify">
             <div dangerouslySetInnerHTML={{ __html: page.content }} />
           </div>
         </div>

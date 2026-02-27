@@ -13,7 +13,7 @@ export default async function FestivalsPage() {
   return (
     <div className="bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-80 flex items-center justify-center text-center overflow-hidden">
+      <section className="relative h-80 pt-16 flex items-center justify-center text-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[url('/images/bg.jpg')] bg-cover bg-center"></div>

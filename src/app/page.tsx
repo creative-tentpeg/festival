@@ -53,7 +53,7 @@ export default async function Home() {
               height={600}
               sizes="100vw"
               priority
-              className="w-full max-w-md h-auto"
+              className="w-full max-w-md h-auto md:-translate-x-10"
             />
           </div>
         </div>
@@ -83,6 +83,46 @@ export default async function Home() {
             {upcomingFestivals.map((festival) => (
               <FestivalCard key={festival.slug} festival={festival} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-linear-to-b from-gray-100 to-gray-50 border-y border-stone-200/70">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-xs sm:text-sm uppercase tracking-[0.24em] text-stone-500 mb-3">
+              Our Community
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 font-heading text-center">
+              What Makes Cabarrus County so Special?
+            </h2>
+            <div className="mt-4 flex items-center justify-center gap-3">
+              <span className="h-px w-12 bg-stone-300" />
+              <span className="h-1.5 w-1.5 rounded-full bg-festival-green" />
+              <span className="h-px w-12 bg-stone-300" />
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto bg-white/85 border border-stone-200 rounded-2xl shadow-sm px-6 py-8 sm:px-10 sm:py-10">
+            <div className="space-y-6 text-stone-700 leading-relaxed text-base md:text-lg text-justify">
+            <p>
+              Nestled in the heart of the Piedmont region of North Carolina,
+              Cabarrus County is a place where small-town charm meets big
+              community spirit. From the historic streets of downtown Concord
+              to the warm, welcoming neighborhoods that make up every corner of
+              the county, Cabarrus has a way of making people feel like they
+              belong the moment they arrive. It&apos;s a place rich in history,
+              rooted in tradition, and alive with a growing energy that
+              continues to draw people in from all walks of life.
+            </p>
+
+            <p>
+              The people here are its greatest treasure, and that community
+              pride is exactly what inspired Cabarrus Festivals to exist in the
+              first place. We&apos;re not just celebrating events; we&apos;re
+              celebrating the county we love.
+            </p>
+            </div>
           </div>
         </div>
       </section>

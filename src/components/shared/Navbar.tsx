@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Facebook, Instagram, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 
@@ -33,45 +33,66 @@ export function Navbar() {
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 font-heading tracking-wide",
         scrolled
-          ? "bg-[#022154]/95 backdrop-blur-md shadow-lg py-2"
+          ? "bg-[#022154]/95 backdrop-blur-md shadow-lg py-1"
           : "bg-transparent py-4",
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="shrink-0 flex items-center">
+        <div className="flex justify-between items-center">
+          <div className={cn("shrink-0 flex items-center", scrolled ? "pt-1" : "pt-4")}>
             <Link href="/" className="group flex items-center space-x-2">
               <Image
                 src="/images/cabarrus-logo.png"
                 alt="Cabarrus Festivals Logo"
                 width={250}
-                height={70}
-                className="h-30 w-auto"
+                height={120}
+                className={cn("w-auto", scrolled ? "h-[100px]" : "h-[120px]")}
                 priority
               />
             </Link>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:ml-6 md:flex md:space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "inline-flex items-center px-1 pt-1 text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#FFCA00]",
-                  pathname === link.href
-                    ? scrolled
-                      ? "text-white border-b-2 border-white"
-                      : "text-[#FFCA00] border-b-2 border-[#FFCA00]"
-                    : scrolled
-                      ? "text-white"
+          {/* Desktop Menu + Social */}
+          <div className="hidden md:ml-6 md:flex md:items-center md:gap-6">
+            <div className="md:flex md:space-x-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "inline-flex items-center px-1 pt-1 text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#FFCA00]",
+                    pathname === link.href
+                      ? scrolled
+                        ? "text-white border-b-2 border-white"
+                        : "text-[#FFCA00] border-b-2 border-[#FFCA00]"
                       : "text-white",
-                )}
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            <span className="text-white/60 select-none" aria-hidden="true">
+              |
+            </span>
+
+            <div className="flex items-center gap-2">
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="bg-white/20 hover:bg-white/30 p-2 rounded-lg transition-colors"
               >
-                {link.label}
-              </Link>
-            ))}
+                <Facebook className="w-4 h-4 text-white" />
+              </a>
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="bg-white/20 hover:bg-white/30 p-2 rounded-lg transition-colors"
+              >
+                <Instagram className="w-4 h-4 text-white" />
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}

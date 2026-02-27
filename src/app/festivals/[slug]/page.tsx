@@ -69,7 +69,7 @@ export default async function FestivalDetailPage({ params }: Props) {
           priority
         />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center pt-16">
           <div className="text-center text-white px-4 max-w-4xl">
             <span className="inline-block px-3 py-1 bg-festival-green rounded-full text-sm font-semibold mb-4 uppercase tracking-wider text-white">
               {festival.category}

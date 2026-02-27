@@ -12,39 +12,57 @@ const faqData = [
     questions: [
       {
         id: "general-1",
-        question: "What time does the festival start and end?",
+        question: "What is Cabarrus Festivals?",
         answer:
-          "The festival runs from 10:00 AM to 11:00 PM on May 30th, 2026. Gates open at 10 AM, with entertainment and activities throughout the day.",
+          "Cabarrus Festivals is a community-driven hub connecting you to the best local festivals happening throughout Cabarrus County. We bring together a variety of events celebrating food, music, art, culture, and family fun - all in one place so you never miss what's happening in your own backyard.",
       },
       {
         id: "general-2",
-        question: "Where is the festival located?",
+        question: "How many festivals are featured on this site?",
         answer:
-          "The Cabarrus Celtic Festival is held at Cabarrus Brewing Co. in Concord, NC. The venue provides ample parking and easy access for all attendees.",
+          "We feature a growing lineup of festivals throughout the year. Each festival has its own dedicated page where you can find everything you need to know about that specific event. Be sure to check back often as new festivals are added regularly!",
       },
       {
         id: "general-3",
-        question: "Is this an indoor or outdoor event?",
+        question: "Are the festivals family friendly?",
         answer:
-          "The festival is held at an indoor venue, making it comfortable regardless of weather conditions.",
+          "Absolutely! Community and family are at the core of everything we do. The majority of our festivals are designed with all ages in mind. Be sure to check each individual festival page for age-specific details, activities, and any restrictions that may apply.",
       },
       {
         id: "general-4",
-        question: "Is the event rain or shine?",
+        question: "Is there an admission fee to attend?",
         answer:
-          "Yes, the event will be held rain or shine. As an indoor event, weather is not a concern.",
+          "Admission varies by festival. Some events are completely free to the public, while others may require a ticket or have a small entry fee. You'll find full pricing details on each festival's individual page.",
       },
       {
         id: "general-5",
-        question: "How do I sponsor this event?",
+        question: "How do I find out about dates, times, and locations?",
         answer:
-          "If you are interested in sponsoring the Cabarrus Celtic Festival, please visit our Sponsor page or contact us at info@cabarruscelticfestival.com for sponsorship opportunities.",
+          "Each festival listed on our site has its own dedicated page with all the details including date, time, location, parking information, and the full event schedule. Simply click on the festival you're interested in to get everything you need.",
       },
       {
         id: "general-6",
-        question: "Can I be a vendor on site?",
+        question: "Can I be a vendor at one of the festivals?",
         answer:
-          "Yes! We welcome local vendors and artisans. Please visit our Vendor page or contact us at info@cabarruscelticfestival.com to apply.",
+          "We love supporting local businesses and makers! Vendor opportunities vary by festival. Head to the individual festival page you're interested in and look for vendor application information, or reach out to us directly through our contact page.",
+      },
+      {
+        id: "general-7",
+        question: "Can local musicians or performers apply to be featured?",
+        answer:
+          "Yes! We are always looking to showcase local talent. Performer and entertainment inquiries vary by event, so visit the specific festival page or contact us and we'll point you in the right direction.",
+      },
+      {
+        id: "general-8",
+        question: "How do I stay up to date on new festivals and announcements?",
+        answer:
+          "The best ways to stay in the loop are to follow us on social media and sign up for our email newsletter. We regularly post updates on new festivals, featured vendors, lineup announcements, and more so you'll always be the first to know.",
+      },
+      {
+        id: "general-9",
+        question: "What happens if a festival is cancelled or postponed?",
+        answer:
+          "In the event of a cancellation or postponement, updates will be posted on the affected festival's page as well as our social media channels as quickly as possible. We recommend following us online so you receive real-time updates.",
       },
     ],
   },
@@ -141,7 +159,7 @@ const faqData = [
         id: "practical-3",
         question: "How can I volunteer or get involved next year?",
         answer:
-          "We love community support! Visit our Volunteer page to sign up or email volunteers@cabarruscelticfestival.com for volunteer opportunities.",
+          "We love community support! Visit our Volunteer page to sign up or email info@cabarrusfestivals.com for volunteer opportunities.",
       },
     ],
   },
@@ -151,7 +169,7 @@ export default function FAQPage() {
   return (
     <div className="bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-80 flex items-center justify-center text-center overflow-hidden">
+      <section className="relative h-80 pt-16 flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[url('/images/bg.jpg')] bg-cover bg-center"></div>
           <div className="absolute inset-0 bg-black/60"></div>
@@ -162,7 +180,7 @@ export default function FAQPage() {
             FAQ
           </h1>
           <p className="text-xl text-white/90 font-light drop-shadow-md">
-            Frequently asked questions about the Cabarrus Celtic Festival
+            Frequently asked questions about Cabarrus Festival
           </p>
         </div>
       </section>
