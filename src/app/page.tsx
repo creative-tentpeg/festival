@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cms } from "@/lib/cms/client";
 import { FestivalCard } from "@/components/shared/FestivalCard";
+import { NextFestivalTimer } from "@/components/shared/NextFestivalTimer";
 import { ArrowRight } from "lucide-react";
 
 export default async function Home() {
@@ -10,7 +11,7 @@ export default async function Home() {
   return (
     <div className="bg-background min-h-screen">
       {/* Hero Section - Celtic Festival Feature */}
-      <section className="relative h-screen min-h-150 flex items-center justify-center text-center overflow-hidden">
+      <section className="relative min-h-screen md:h-screen flex items-center justify-center text-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -24,7 +25,7 @@ export default async function Home() {
           <div className="absolute inset-0 bg-[#000000]/60"></div>
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-10 sm:gap-14 md:gap-48 lg:gap-56 pt-28 sm:pt-32 md:pt-0">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-48 lg:gap-56 pt-36 sm:pt-40 pb-28 md:pb-0 md:pt-0">
           <div className="flex-1 flex flex-col items-center md:items-start md:mr-6">
             <h1 className="text-center md:text-left text-4xl sm:text-5xl md:text-6xl font-bold text-white font-heading mb-6 sm:mb-8">
               Bringing
@@ -34,7 +35,6 @@ export default async function Home() {
               Together!
             </h1>
             <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-6">
-              {/* eslint-disable-next-line */}
               <a
                 href="https://cabarruscelticfestival.com/"
                 target="_blank"
@@ -45,7 +45,7 @@ export default async function Home() {
               </a>
             </div>
           </div>
-          <div className="flex justify-center md:justify-end md:ml-6 grow">
+          <div className="flex justify-center md:justify-end flex-none">
             <Image
               src="/images/cabarrus-white-logo.png"
               alt="Celtic Logo"
@@ -53,10 +53,19 @@ export default async function Home() {
               height={600}
               sizes="100vw"
               priority
-              className="w-full max-w-md h-auto md:-translate-x-10"
+              className="w-[56%] sm:w-[50%] md:w-full max-w-xs sm:max-w-sm md:max-w-md h-auto md:-translate-x-10"
             />
           </div>
         </div>
+
+        {upcomingFestivals[0] && (
+          <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-30 px-4 w-full flex justify-center">
+            <NextFestivalTimer
+              festivalName={upcomingFestivals[0].name}
+              startDate={upcomingFestivals[0].startDate}
+            />
+          </div>
+        )}
       </section>
 
       {/* Featured Festivals Loop */}
@@ -110,8 +119,8 @@ export default async function Home() {
               Cabarrus County is a place where small-town charm meets big
               community spirit. From the historic streets of downtown Concord
               to the warm, welcoming neighborhoods that make up every corner of
-              the county, Cabarrus has a way of making people feel like they
-              belong the moment they arrive. It&apos;s a place rich in history,
+              the county, <b>Cabarrus has a way of making people feel like they
+              belong the moment they arrive.</b> It&apos;s a place rich in history,
               rooted in tradition, and alive with a growing energy that
               continues to draw people in from all walks of life.
             </p>
@@ -119,10 +128,33 @@ export default async function Home() {
             <p>
               The people here are its greatest treasure, and that community
               pride is exactly what inspired Cabarrus Festivals to exist in the
-              first place. We&apos;re not just celebrating events; we&apos;re
-              celebrating the county we love.
+              first place. <b>We're not just celebrating events; we're
+              celebrating the county we love.</b>
             </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-xs sm:text-sm uppercase tracking-[0.24em] text-stone-500 mb-3">
+              Event Location
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 font-heading">
+              Where The Festivals Happen
+            </h2>
+          </div>
+
+          <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-sm min-h-[320px]">
+              <iframe
+                title="Cabarrus Festivals Event Location Map"
+                src="https://www.google.com/maps?q=Cabarrus+Brewing+Co,+Concord,+NC&output=embed"
+                className="w-full h-full min-h-[320px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
           </div>
         </div>
       </section>

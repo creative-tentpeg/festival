@@ -87,11 +87,11 @@ export const mockFestivals: Festival[] = [
     category: "seasonal",
     startDate: "2026-07-04T10:00:00Z",
     endDate: "2026-07-04T22:00:00Z",
-    venueName: "Cabarrus Festivals",
-    venueAddress: "57 Union St S.",
-    cityState: "Concord, NC 28025",
-    heroImage: "/images/bg.jpg",
-    cardImage: "/images/bg.jpg",
+    venueName: "Cabarrus Brewing Co.",
+    venueAddress: "Cabarrus Brewing Co.",
+    cityState: "Concord, NC",
+    heroImage: "/images/4-july.jpg",
+    cardImage: "/images/4-july.jpg",
     shortDescription:
       "A festive July 4th celebration with music, local vendors, family activities, and community spirit.",
     longDescription:
@@ -109,7 +109,7 @@ export const mockFestivals: Festival[] = [
       { time: "22:00", title: "Festival Closes" },
     ],
     faqs: [],
-    gallery: ["/images/celtic-1.svg", "/images/celtic-2.svg"],
+    gallery: ["/images/4-july.jpg", "/images/4-july-2.jpg"],
     sponsors: [],
     status: "upcoming",
     seo: {
@@ -125,11 +125,11 @@ export const mockFestivals: Festival[] = [
     category: "food",
     startDate: "2026-10-03T11:00:00Z",
     endDate: "2026-10-04T23:00:00Z",
-    venueName: "Cabarrus Festivals",
-    venueAddress: "57 Union St S.",
-    cityState: "Concord, NC 28025",
-    heroImage: "/images/bg.jpg",
-    cardImage: "/images/bg.jpg",
+    venueName: "Cabarrus Brewing Co.",
+    venueAddress: "Cabarrus Brewing Co.",
+    cityState: "Concord, NC",
+    heroImage: "/images/ocktober-fest.jpg",
+    cardImage: "/images/ocktober-fest.jpg",
     shortDescription:
       "Celebrate Oktoberfest on October 3rd and 4th, 2026 with food, drinks, music, and community fun.",
     longDescription:
@@ -147,7 +147,7 @@ export const mockFestivals: Festival[] = [
       { time: "23:00", title: "Day 2 Closes" },
     ],
     faqs: [],
-    gallery: ["/images/celtic-1.svg", "/images/celtic-2.svg"],
+    gallery: ["/images/ocktober-fest.jpg", "/images/ocktober-fest-2.jpg"],
     sponsors: [],
     status: "upcoming",
     seo: {
