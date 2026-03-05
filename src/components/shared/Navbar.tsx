@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Facebook, Instagram, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -18,7 +18,9 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +29,35 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isNavigating) return;
+    const timeout = setTimeout(() => setIsNavigating(false), 120);
+    return () => clearTimeout(timeout);
+  }, [pathname, isNavigating]);
+
+  const handleMenuNavigation = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (
+      href === pathname ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey ||
+      event.button !== 0
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    setIsOpen(false);
+    setIsNavigating(true);
+    setTimeout(() => {
+      router.push(href);
+    }, 180);
+  };
 
   return (
     <nav
@@ -59,6 +90,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={(event) => handleMenuNavigation(event, link.href)}
                   className={cn(
                     "inline-flex items-center px-1 pt-1 text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#FFCA00]",
                     pathname === link.href
@@ -130,13 +162,14 @@ export function Navbar() {
                   ? "bg-white/15 text-white"
                   : "text-white/90 hover:bg-festival-green hover:text-white",
               )}
-              onClick={() => setIsOpen(false)}
+              onClick={(event) => handleMenuNavigation(event, link.href)}
             >
               {link.label}
             </Link>
           ))}
         </div>
       </div>
+
     </nav>
   );
 }
