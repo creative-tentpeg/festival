@@ -37,7 +37,7 @@ export default async function Home() {
             <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-6">
               <a
                 href="/festivals"
-                target="_blank"
+                target="_self"
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-heading font-bold tracking-wide rounded-full hover:from-festival-green-dark hover:to-festival-green-darker hover:shadow-xl transition-all duration-300 shadow-lg hover:-translate-y-1"
               >
