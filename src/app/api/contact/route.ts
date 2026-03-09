@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
@@ -17,6 +15,16 @@ export async function POST(req: Request) {
         new URL("/contact?error=missing_fields", req.url),
       );
     }
+
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error("Missing RESEND_API_KEY environment variable");
+      return NextResponse.redirect(
+        new URL("/contact?error=email_not_configured", req.url),
+      );
+    }
+
+    const resend = new Resend(apiKey);
 
     await resend.emails.send({
       from: "Cabarrus Festivals <no-reply@cabarrusfestivals.com>",
