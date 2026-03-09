@@ -1,7 +1,8 @@
 import { cms } from "@/lib/cms/client";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Metadata } from "next";
 import { Facebook, Instagram } from "lucide-react";
+import { Resend } from "resend";
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await cms.getPage("contact");
@@ -11,6 +12,48 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page.seo.title,
     description: page.seo.description,
   };
+}
+
+async function handleContact(formData: FormData) {
+  "use server";
+
+  const name = (formData.get("name") || "").toString();
+  const email = (formData.get("email") || "").toString();
+  const subject = (formData.get("subject") || "").toString();
+  const message = (formData.get("message") || "").toString();
+
+  if (!name || !email || !message) {
+    redirect("/contact?error=missing_fields");
+  }
+
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("Missing RESEND_API_KEY environment variable");
+    redirect("/contact?error=email_not_configured");
+  }
+
+  const resend = new Resend(apiKey);
+
+  try {
+    await resend.emails.send({
+      from: "Cabarrus Festivals <no-reply@cabarrusfestivals.com>",
+      to: "info@cabarruscelticfestival.com",
+      replyTo: email,
+      subject: subject || "New contact form message",
+      text: [
+        `New contact form submission from ${name} <${email}>`,
+        "",
+        `Subject: ${subject || "(no subject)"}`,
+        "",
+        message,
+      ].join("\n"),
+    });
+
+    redirect("/contact?success=1");
+  } catch (error) {
+    console.error("Error sending contact email via Resend:", error);
+    redirect("/contact?error=internal_error");
+  }
 }
 
 export default async function ContactPage() {
@@ -80,11 +123,7 @@ export default async function ContactPage() {
               <h2 className="text-2xl font-bold text-stone-900 font-heading mb-6">
                 Send us a message
               </h2>
-              <form
-                className="space-y-5"
-                action="/api/contact"
-                method="post"
-              >
+              <form className="space-y-5" action={handleContact}>
                 <div>
                   <label
                     htmlFor="name"
