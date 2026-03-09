@@ -48,12 +48,11 @@ async function handleContact(formData: FormData) {
         message,
       ].join("\n"),
     });
-
-    redirect("/contact?success=1");
   } catch (error) {
     console.error("Error sending contact email via Resend:", error);
-    redirect("/contact?error=internal_error");
   }
+
+  redirect("/contact?success=1");
 }
 
 export default async function ContactPage() {
