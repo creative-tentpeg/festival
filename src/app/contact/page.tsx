@@ -27,6 +27,7 @@ async function handleContact(formData: FormData) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
+  const toEmail = process.env.CONTACT_TO_EMAIL || "info@cabarrusfestivals.com";
   if (!apiKey) {
     console.error("Missing RESEND_API_KEY environment variable");
     redirect("/contact?error=email_not_configured");
@@ -35,9 +36,9 @@ async function handleContact(formData: FormData) {
   const resend = new Resend(apiKey);
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "Cabarrus Festivals <no-reply@cabarrusfestivals.com>",
-      to: "info@cabarruscelticfestival.com",
+      to: toEmail,
       replyTo: email,
       subject: subject || "New contact form message",
       text: [
@@ -48,8 +49,14 @@ async function handleContact(formData: FormData) {
         message,
       ].join("\n"),
     });
+
+    if (error) {
+      console.error("Resend returned an error for contact form:", error);
+      redirect("/contact?error=send_failed");
+    }
   } catch (error) {
     console.error("Error sending contact email via Resend:", error);
+    redirect("/contact?error=send_failed");
   }
 
   redirect("/contact?success=1");
