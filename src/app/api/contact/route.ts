@@ -11,17 +11,13 @@ export async function POST(req: Request) {
     const message = (formData.get("message") || "").toString();
 
     if (!name || !email || !message) {
-      return NextResponse.redirect(
-        new URL("/contact?error=missing_fields", req.url),
-      );
+      return NextResponse.redirect("/contact?error=missing_fields");
     }
 
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       console.error("Missing RESEND_API_KEY environment variable");
-      return NextResponse.redirect(
-        new URL("/contact?error=email_not_configured", req.url),
-      );
+      return NextResponse.redirect("/contact?error=email_not_configured");
     }
 
     const resend = new Resend(apiKey);
@@ -40,12 +36,10 @@ export async function POST(req: Request) {
       ].join("\n"),
     });
 
-    return NextResponse.redirect(new URL("/contact?success=1", req.url));
+    return NextResponse.redirect("/contact?success=1");
   } catch (error) {
     console.error("Error sending contact email via Resend:", error);
-    return NextResponse.redirect(
-      new URL("/contact?error=internal_error", req.url),
-    );
+    return NextResponse.redirect("/contact?error=internal_error");
   }
 }
 

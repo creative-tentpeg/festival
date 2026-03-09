@@ -7,17 +7,13 @@ export async function POST(req: Request) {
     const email = (formData.get("email") || "").toString();
 
     if (!email) {
-      return NextResponse.redirect(
-        new URL("/?newsletter_error=missing_email", req.url),
-      );
+      return NextResponse.redirect("/?newsletter_error=missing_email");
     }
 
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       console.error("Missing RESEND_API_KEY environment variable");
-      return NextResponse.redirect(
-        new URL("/?newsletter_error=email_not_configured", req.url),
-      );
+      return NextResponse.redirect("/?newsletter_error=email_not_configured");
     }
 
     const resend = new Resend(apiKey);
@@ -29,14 +25,10 @@ export async function POST(req: Request) {
       text: `New newsletter subscription: ${email}`,
     });
 
-    return NextResponse.redirect(
-      new URL("/?newsletter_success=1", req.url),
-    );
+    return NextResponse.redirect("/?newsletter_success=1");
   } catch (error) {
     console.error("Error handling newsletter subscription via Resend:", error);
-    return NextResponse.redirect(
-      new URL("/?newsletter_error=internal_error", req.url),
-    );
+    return NextResponse.redirect("/?newsletter_error=internal_error");
   }
 }
 
