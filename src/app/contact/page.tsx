@@ -82,7 +82,7 @@ export default async function ContactPage() {
               </h2>
               <form
                 className="space-y-5"
-                action="/api/contact"
+                action="/contact"
                 method="post"
               >
                 <div>
