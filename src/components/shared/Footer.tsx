@@ -102,8 +102,13 @@ export function Footer() {
             <p className="text-white/80 mb-4 text-sm">
               Subscribe for festival updates and news.
             </p>
-            <form className="space-y-2">
+            <form
+              className="space-y-2"
+              action="/api/newsletter"
+              method="post"
+            >
               <input
+                name="email"
                 type="email"
                 placeholder="Your email"
                 className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white/50 transition-colors"

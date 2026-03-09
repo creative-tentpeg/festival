@@ -82,9 +82,8 @@ export default async function ContactPage() {
               </h2>
               <form
                 className="space-y-5"
-                action="mailto:info@cabarruscelticfestival.com"
+                action="/api/contact"
                 method="post"
-                encType="text/plain"
               >
                 <div>
                   <label
