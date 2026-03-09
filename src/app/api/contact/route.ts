@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: "Cabarrus Festivals <no-reply@cabarrusfestivals.com>",
       to: "info@cabarruscelticfestival.com",
-      reply_to: email,
+      replyTo: email,
       subject: subject || "New contact form message",
       text: [
         `New contact form submission from ${name} <${email}>`,
