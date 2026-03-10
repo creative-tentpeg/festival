@@ -92,11 +92,11 @@ export function Navbar() {
                   href={link.href}
                   onClick={(event) => handleMenuNavigation(event, link.href)}
                   className={cn(
-                    "inline-flex items-center px-1 pt-1 text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#FFCA00]",
+                    "nav-link-frame inline-flex items-center text-sm font-semibold uppercase tracking-wider transition-colors",
                     pathname === link.href
                       ? scrolled
-                        ? "text-white border-b-2 border-white"
-                        : "text-[#FFCA00] border-b-2 border-[#FFCA00]"
+                        ? "text-white nav-link-frame-active-white"
+                        : "text-[#FFCA00] nav-link-frame-active-yellow"
                       : "text-white",
                   )}
                 >
