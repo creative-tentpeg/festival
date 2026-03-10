@@ -70,9 +70,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: [{ url: "/images/cabarrus-logo.png", type: "image/png" }],
-    shortcut: ["/images/cabarrus-logo.png"],
-    apple: [{ url: "/images/cabarrus-logo.png", type: "image/png" }],
+    icon: [{ url: "/images/cabarrus-logo.png?v=2", type: "image/png" }],
+    shortcut: ["/images/cabarrus-logo.png?v=2"],
+    apple: [{ url: "/images/cabarrus-logo.png?v=2", type: "image/png" }],
   },
 };
 
