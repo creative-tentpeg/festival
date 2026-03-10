@@ -109,7 +109,11 @@ export const mockFestivals: Festival[] = [
       { time: "22:00", title: "Festival Closes" },
     ],
     faqs: [],
-    gallery: ["/images/4-july.jpg", "/images/4-july-2.jpg"],
+    gallery: [
+      "/images/gallery-4th-july-1.jpg",
+      "/images/4th-july-gallery-2.jpeg",
+      "/images/4th-july-gallery-3.jpg",
+    ],
     sponsors: [],
     status: "upcoming",
     seo: {
@@ -147,7 +151,11 @@ export const mockFestivals: Festival[] = [
       { time: "23:00", title: "Day 2 Closes" },
     ],
     faqs: [],
-    gallery: ["/images/ocktober-fest.jpg", "/images/ocktober-fest-2.jpg"],
+    gallery: [
+      "/images/Oktoberfest-1.jpg",
+      "/images/Oktoberfest-2.jpg",
+      "/images/Oktoberfest-3.jpg",
+    ],
     sponsors: [],
     status: "upcoming",
     seo: {
