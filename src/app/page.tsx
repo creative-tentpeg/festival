@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { cms } from "@/lib/cms/client";
 import { FestivalCard } from "@/components/shared/FestivalCard";
 import { NextFestivalTimer } from "@/components/shared/NextFestivalTimer";
+import { NewsletterSignupForm } from "@/components/shared/NewsletterSignupForm";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -180,25 +181,15 @@ export default async function Home() {
             Get updates on all of our upcoming events and festivals!
           </p>
 
-          <form
-            action="/api/newsletter"
-            method="post"
-            className="mt-8 max-w-xl mx-auto flex flex-col sm:flex-row gap-3"
-          >
-            <input
-              name="email"
-              type="email"
-              required
-              placeholder="Your email address"
-              className="w-full px-4 py-3 rounded-full border border-white/40 bg-white/15 text-white placeholder:text-white/80 focus:outline-none focus:border-white"
-            />
-            <button
-              type="submit"
-              className="px-7 py-3 rounded-full bg-[#022154] text-white font-heading font-bold hover:bg-[#01163a] transition-colors whitespace-nowrap"
-            >
-              Join Mailing List
-            </button>
-          </form>
+          <NewsletterSignupForm
+            formClassName="mt-8 max-w-xl mx-auto flex flex-col sm:flex-row gap-3"
+            inputClassName="w-full px-4 py-3 rounded-full border border-white/40 bg-white/15 text-white placeholder:text-white/80 focus:outline-none focus:border-white"
+            buttonClassName="px-7 py-3 rounded-full bg-[#022154] text-white font-heading font-bold hover:bg-[#01163a] transition-colors whitespace-nowrap"
+            buttonLabel="Join Mailing List"
+            inputPlaceholder="Your email address"
+            successClassName="mt-3 text-sm text-white"
+            errorClassName="mt-3 text-sm text-red-100"
+          />
         </div>
       </section>
 

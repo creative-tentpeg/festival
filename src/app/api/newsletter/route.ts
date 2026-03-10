@@ -2,10 +2,32 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 export async function POST(req: Request) {
+  const wantsJson =
+    req.headers.get("accept")?.includes("application/json") ?? false;
+
   const redirectTo = (path: string) =>
     new NextResponse(null, {
       status: 303,
       headers: { Location: path },
+    });
+
+  const jsonError = (status: number, code: string, message: string) =>
+    NextResponse.json({ ok: false, code, message }, { status });
+
+  const handleError = (
+    code: string,
+    message: string,
+    path: string,
+    status = 400,
+  ) => (wantsJson ? jsonError(status, code, message) : redirectTo(path));
+
+  const jsonSuccess = (contactSaved: boolean) =>
+    NextResponse.json({
+      ok: true,
+      contactSaved,
+      message: contactSaved
+        ? "Subscribed successfully."
+        : "Subscribed, but contact sync is pending.",
     });
 
   try {
@@ -15,17 +37,27 @@ export async function POST(req: Request) {
       process.env.NEWSLETTER_TO_EMAIL || "info@cabarrusfestivals.com";
 
     if (!email) {
-      return redirectTo("/?newsletter_error=missing_email");
+      return handleError(
+        "missing_email",
+        "Please enter your email.",
+        "/?newsletter_error=missing_email",
+      );
     }
 
     const apiKey = process.env.RESEND_API_KEY;
     const audienceId = process.env.RESEND_AUDIENCE_ID;
     if (!apiKey) {
       console.error("Missing RESEND_API_KEY environment variable");
-      return redirectTo("/?newsletter_error=email_not_configured");
+      return handleError(
+        "email_not_configured",
+        "Email service is not configured.",
+        "/?newsletter_error=email_not_configured",
+        500,
+      );
     }
 
     const resend = new Resend(apiKey);
+    let contactSaved = true;
 
     // Save subscriber as a Resend contact (upsert behavior).
     const createContact = await resend.contacts.create({
@@ -47,7 +79,7 @@ export async function POST(req: Request) {
           updateError: updateContact.error,
           email,
         });
-        return redirectTo("/?newsletter_error=contact_save_failed");
+        contactSaved = false;
       }
     }
 
@@ -60,12 +92,26 @@ export async function POST(req: Request) {
 
     if (error) {
       console.error("Resend returned an error for newsletter:", error);
-      return redirectTo("/?newsletter_error=send_failed");
+      return handleError(
+        "send_failed",
+        "Could not send subscription notification.",
+        "/?newsletter_error=send_failed",
+        500,
+      );
+    }
+
+    if (wantsJson) {
+      return jsonSuccess(contactSaved);
     }
 
     return redirectTo("/?newsletter_success=1");
   } catch (error) {
     console.error("Error handling newsletter subscription via Resend:", error);
-    return redirectTo("/?newsletter_error=internal_error");
+    return handleError(
+      "internal_error",
+      "Unexpected error while subscribing.",
+      "/?newsletter_error=internal_error",
+      500,
+    );
   }
 }
