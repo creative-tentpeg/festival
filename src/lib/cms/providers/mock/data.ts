@@ -105,23 +105,11 @@ export const mockFestivals: Festival[] = [
     ],
     schedule: [
       { time: "10:00", title: "Festival Opens" },
-      { time: "12:00", title: "Food & Vendor Market Opens" },
       { time: "14:00", title: "Live Music and Performances" },
-      { time: "20:00", title: "Evening Celebration" },
       { time: "22:00", title: "Festival Closes" },
     ],
-    faqs: [
-      {
-        question: "Where is the July 4th Anniversary Festival held?",
-        answer: "Cabarrus Brewing Co., Concord, NC.",
-      },
-      {
-        question: "Is this event family-friendly?",
-        answer:
-          "Yes. The festival is designed for all ages with food, music, and community activities.",
-      },
-    ],
-    gallery: ["/images/4-july.jpg", "/images/4-july.jpg"],
+    faqs: [],
+    gallery: ["/images/4-july.jpg", "/images/4-july-2.jpg"],
     sponsors: [],
     status: "upcoming",
     seo: {
@@ -155,22 +143,11 @@ export const mockFestivals: Festival[] = [
     ],
     schedule: [
       { time: "11:00", title: "Day 1 Opens" },
-      { time: "13:00", title: "Seasonal Food & Drinks Service" },
       { time: "12:00", title: "Music and Vendor Market" },
-      { time: "19:00", title: "Live Entertainment Feature Set" },
       { time: "23:00", title: "Day 2 Closes" },
     ],
-    faqs: [
-      {
-        question: "When is Oktoberfest?",
-        answer: "October 3rd and 4th, 2026.",
-      },
-      {
-        question: "Where does Oktoberfest take place?",
-        answer: "Cabarrus Brewing Co., Concord, NC.",
-      },
-    ],
-    gallery: ["/images/ocktober-fest.jpg", "/images/ocktober-fest.jpg"],
+    faqs: [],
+    gallery: ["/images/ocktober-fest.jpg", "/images/ocktober-fest-2.jpg"],
     sponsors: [],
     status: "upcoming",
     seo: {

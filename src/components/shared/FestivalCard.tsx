@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Festival } from "@/lib/cms/types";
 import { formatDate } from "@/lib/utils";
 import { Calendar, MapPin } from "lucide-react";
@@ -10,7 +9,12 @@ interface FestivalCardProps {
 
 export function FestivalCard({ festival }: FestivalCardProps) {
   return (
-    <Link href={`/festivals/${festival.slug}`} className="group block h-full">
+    <a
+      href={festival.officialUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block h-full"
+    >
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow h-full flex flex-col">
         <div className="relative h-48 w-full">
           <Image
@@ -45,6 +49,6 @@ export function FestivalCard({ festival }: FestivalCardProps) {
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }
