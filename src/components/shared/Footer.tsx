@@ -106,7 +106,7 @@ export function Footer() {
             <NewsletterSignupForm
               formClassName="space-y-2"
               inputClassName="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white/50 transition-colors"
-              buttonClassName="w-full px-4 py-2 bg-[#01163a] text-white font-semibold rounded-lg hover:bg-[#00102b] transition-colors"
+              buttonClassName="w-full px-4 py-2 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-semibold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
               buttonLabel="Subscribe"
               inputPlaceholder="Your email"
             />

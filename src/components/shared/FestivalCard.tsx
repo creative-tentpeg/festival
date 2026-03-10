@@ -15,7 +15,10 @@ export function FestivalCard({ festival }: FestivalCardProps) {
   const href = isExternal ? festival.officialUrl! : `/festivals/${festival.slug}`;
 
   const cardContent = (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow h-full flex flex-col">
+    <div
+      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col"
+      data-aos="fade-up"
+    >
       <div className="relative h-48 w-full">
         <Image
           src={festival.cardImage}

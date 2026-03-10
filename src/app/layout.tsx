@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/shared/Footer";
+import { AOSRuntime } from "@/components/shared/AOSRuntime";
 
 // Festival/Heritage vibe for headings
 const cinzel = Cinzel({
@@ -82,6 +83,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cinzel.variable} ${lato.variable}`}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+        />
+      </head>
       <body
         suppressHydrationWarning
         className="min-h-screen flex flex-col font-body bg-background text-foreground antialiased selection:bg-festival-green/20 selection:text-[#022154]"
@@ -106,8 +113,34 @@ export default function RootLayout({
           `}
         </Script>
         <Navbar />
+        <AOSRuntime />
         <main className="grow">{children}</main>
         <Footer />
+        <Script
+          src="https://unpkg.com/aos@2.3.4/dist/aos.js"
+          strategy="afterInteractive"
+        />
+        <Script id="aos-init" strategy="afterInteractive">
+          {`
+            (() => {
+              const runAOS = () => {
+                if (!window.AOS) return false;
+                document.body.classList.add('aos-enabled');
+                window.AOS.init({
+                  duration: 800,
+                  easing: 'ease-out-cubic',
+                  once: true,
+                  mirror: false,
+                  offset: 60
+                });
+
+                return true;
+              };
+
+              runAOS();
+            })();
+          `}
+        </Script>
         <Script src="https://cdn.jotfor.ms/agent/embedjs/019cd3f91e6a7e0086358e0822795f3c3088/embed.js" strategy="afterInteractive" />
       </body>
     </html>

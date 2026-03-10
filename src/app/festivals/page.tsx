@@ -32,15 +32,15 @@ export default async function FestivalsPage() {
       <section className="relative h-80 pt-16 flex items-center justify-center text-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('/images/bg.jpg')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('/images/bg.jpg')] bg-cover bg-center "></div>
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
 
-        <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 font-heading tracking-tight drop-shadow-lg">
+        <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 font-heading tracking-tight drop-shadow-lg" data-aos="fade-up" data-aos-delay="80">
           Upcoming Festivals 
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto font-light drop-shadow-md">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto font-light drop-shadow-md" data-aos="fade-up" data-aos-delay="140">
             Discover all the amazing celebrations happening in Cabarrus County
           </p>
         </div>
@@ -50,8 +50,10 @@ export default async function FestivalsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {festivals.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {festivals.map((festival) => (
-              <FestivalCard key={festival.slug} festival={festival} />
+            {festivals.map((festival, idx) => (
+              <div key={festival.slug} data-aos="fade-up" data-aos-delay={90 + idx * 70}>
+                <FestivalCard festival={festival} />
+              </div>
             ))}
           </div>
         ) : (
@@ -71,11 +73,11 @@ export default async function FestivalsPage() {
           <div className="absolute inset-0 bg-red-900/95" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white" data-aos="fade-up">
+          <h2 className="text-3xl md:text-4xl font-bold font-heading" data-aos="fade-up" data-aos-delay="80">
             Stay Connected!
           </h2>
-          <p className="mt-4 text-base md:text-lg">
+          <p className="mt-4 text-base md:text-lg" data-aos="fade-up" data-aos-delay="130">
             Get updates on all of our upcoming events and festivals!
           </p>
 

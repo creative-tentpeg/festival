@@ -129,7 +129,7 @@ export default async function FestivalDetailPage({ params }: Props) {
         <div className="bg-white rounded-xl shadow-xl p-8 md:p-12">
           <div className="space-y-12">
               {/* About */}
-              <section>
+              <section className="">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   About the Festival
                 </h2>
@@ -157,7 +157,7 @@ export default async function FestivalDetailPage({ params }: Props) {
 
               {/* Gallery */}
               {festival.gallery.length > 0 && (
-                <section>
+                <section className="">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
                     Gallery
                   </h2>
@@ -233,7 +233,7 @@ export default async function FestivalDetailPage({ params }: Props) {
 
               {/* FAQs */}
               {festival.faqs.length > 0 && (
-                <section>
+                <section className="">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
                     Frequently Asked Questions
                   </h2>
@@ -252,7 +252,7 @@ export default async function FestivalDetailPage({ params }: Props) {
 
             {/* Sponsors */}
             {festival.sponsors.length > 0 && (
-              <section>
+              <section className="">
                 <h3 className="text-xl font-bold mb-4">Sponsors</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {festival.sponsors.map((sponsor, idx) => (

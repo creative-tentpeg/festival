@@ -50,9 +50,9 @@ export default async function Home() {
           <div className="absolute inset-0 bg-[#000000]/60"></div>
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-48 lg:gap-56 pt-36 sm:pt-40 pb-28 md:pb-0 md:pt-0">
+        <div className="hero-wrap-enter relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-48 lg:gap-56 pt-36 sm:pt-40 pb-28 md:pb-0 md:pt-0">
           <div className="flex-1 flex flex-col items-center md:items-start md:mr-6">
-            <h1 className="text-center md:text-left text-4xl sm:text-5xl md:text-6xl font-bold text-white font-heading mb-6 sm:mb-8">
+            <h1 className="hero-title-enter text-center md:text-left text-4xl sm:text-5xl md:text-6xl font-bold text-white font-heading mb-6 sm:mb-8">
               Bringing
               <br />
               <span className="whitespace-nowrap">Cabarrus County</span>
@@ -64,13 +64,13 @@ export default async function Home() {
                 href="/festivals"
                 target="_self"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-heading font-bold tracking-wide rounded-full hover:from-festival-green-dark hover:to-festival-green-darker hover:shadow-xl transition-all duration-300 shadow-lg hover:-translate-y-1"
+                className="hero-btn-enter px-8 py-4 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-heading font-bold tracking-wide rounded-full hover:from-festival-green-dark hover:to-festival-green-darker hover:shadow-xl transition-all duration-300 shadow-lg hover:-translate-y-1"
               >
                 Upcoming Festivals
               </a>
             </div>
           </div>
-          <div className="flex justify-center md:justify-end flex-none">
+          <div className="hero-logo-enter flex justify-center md:justify-end flex-none">
             <Image
               src="/images/cabarrus-white-logo.png"
               alt="Celtic Logo"
@@ -78,7 +78,7 @@ export default async function Home() {
               height={600}
               sizes="100vw"
               priority
-              className="w-[56%] sm:w-[50%] md:w-full max-w-xs sm:max-w-sm md:max-w-md h-auto md:-translate-x-10"
+              className="hero-logo-pulse-target w-[56%] sm:w-[50%] md:w-full max-w-xs sm:max-w-sm md:max-w-md h-auto md:-translate-x-10"
             />
           </div>
         </div>
@@ -96,7 +96,7 @@ export default async function Home() {
       {/* Featured Festivals Loop */}
       <section className="py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-stone-200 pb-4">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-stone-200 pb-4" data-aos="fade-up">
             <div>
               <h2 className="text-3xl font-bold text-stone-900 font-heading">
                 Upcoming Events
@@ -108,14 +108,18 @@ export default async function Home() {
             <Link
               href="/festivals"
               className="hidden sm:flex items-center px-6 py-2 text-white font-medium transition-all rounded-full bg-linear-to-r from-festival-green to-festival-green-dark hover:from-festival-green-dark hover:to-festival-green-darker hover:shadow-lg hover:-translate-y-1 mt-4 md:mt-0"
+              data-aos="fade-left"
+              data-aos-delay="120"
             >
               View all events <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {upcomingFestivals.map((festival) => (
-              <FestivalCard key={festival.slug} festival={festival} />
+            {upcomingFestivals.map((festival, idx) => (
+              <div key={festival.slug} data-aos="fade-up" data-aos-delay={100 + idx * 90}>
+                <FestivalCard festival={festival} />
+              </div>
             ))}
           </div>
         </div>
@@ -123,7 +127,7 @@ export default async function Home() {
 
       <section className="py-24 bg-linear-to-b from-gray-100 to-gray-50 border-y border-stone-200/70">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+          <div className="text-center mb-10" data-aos="fade-up">
             <p className="text-xs sm:text-sm uppercase tracking-[0.24em] text-stone-500 mb-3">
               Our Community
             </p>
@@ -137,7 +141,7 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="max-w-4xl mx-auto bg-white/85 border border-stone-200 rounded-2xl shadow-sm px-6 py-8 sm:px-10 sm:py-10">
+          <div className="max-w-4xl mx-auto bg-white/85 border border-stone-200 rounded-2xl shadow-sm px-6 py-8 sm:px-10 sm:py-10" data-aos="fade-up" data-aos-delay="120">
             <div className="space-y-6 text-stone-700 leading-relaxed text-base md:text-lg text-justify">
             <p>
               Nestled in the heart of the Piedmont region of North Carolina,
@@ -173,7 +177,7 @@ export default async function Home() {
           <div className="absolute inset-0 bg-red-900/95" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white" data-aos="fade-up">
           <h2 className="text-3xl md:text-4xl font-bold font-heading">
             Stay Connected!
           </h2>
@@ -193,7 +197,7 @@ export default async function Home() {
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+          <div className="text-center mb-10" data-aos="fade-up">
             <p className="text-xs sm:text-sm uppercase tracking-[0.24em] text-stone-500 mb-3">
               Event Location
             </p>
@@ -202,7 +206,7 @@ export default async function Home() {
             </h2>
           </div>
 
-          <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-sm min-h-[320px]">
+          <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-sm min-h-[320px]" data-aos="zoom-in" data-aos-delay="120">
               <iframe
                 title="Cabarrus Festivals Event Location Map"
                 src="https://www.google.com/maps?q=Cabarrus+Brewing+Co,+Concord,+NC&output=embed"
