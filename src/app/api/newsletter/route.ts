@@ -23,6 +23,28 @@ export async function POST(req: Request) {
 
     const resend = new Resend(apiKey);
 
+    // Save subscriber as a Resend contact (upsert behavior).
+    const createContact = await resend.contacts.create({
+      email,
+      unsubscribed: false,
+    });
+
+    if (createContact.error) {
+      const updateContact = await resend.contacts.update({
+        email,
+        unsubscribed: false,
+      });
+
+      if (updateContact.error) {
+        console.error("Resend contact upsert failed:", {
+          createError: createContact.error,
+          updateError: updateContact.error,
+          email,
+        });
+        return redirectTo("/?newsletter_error=contact_save_failed");
+      }
+    }
+
     const { error } = await resend.emails.send({
       from: "Cabarrus Festivals <no-reply@cabarrusfestivals.com>",
       to: toEmail,

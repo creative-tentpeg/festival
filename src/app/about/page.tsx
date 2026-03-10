@@ -54,10 +54,24 @@ export default async function AboutPage() {
       </section>
 
       {/* Content Section */}
-      <section className="py-16">
+      <section className="pt-16 pb-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none text-justify [&_p]:text-justify">
             <div dangerouslySetInnerHTML={{ __html: page.content }} />
+          </div>
+        </div>
+      </section>
+
+      <section className="pt-0 pb-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-sm min-h-[320px]">
+            <iframe
+              title="Cabarrus Festivals Event Location Map"
+              src="https://www.google.com/maps?q=Cabarrus+Brewing+Co,+Concord,+NC&output=embed"
+              className="w-full h-full min-h-[320px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>

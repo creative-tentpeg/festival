@@ -81,6 +81,25 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-screen flex flex-col font-body bg-background text-foreground antialiased selection:bg-festival-green/20 selection:text-[#022154]"
       >
+        <Script id="strip-bis-skin-checked" strategy="beforeInteractive">
+          {`
+            (() => {
+              const clean = () => {
+                document.querySelectorAll('[bis_skin_checked]').forEach((el) => {
+                  el.removeAttribute('bis_skin_checked');
+                });
+              };
+              clean();
+              const observer = new MutationObserver(clean);
+              observer.observe(document.documentElement, { attributes: true, childList: true, subtree: true });
+              window.addEventListener('DOMContentLoaded', clean, { once: true });
+              window.addEventListener('load', () => {
+                clean();
+                setTimeout(() => observer.disconnect(), 1500);
+              }, { once: true });
+            })();
+          `}
+        </Script>
         <Navbar />
         <main className="grow">{children}</main>
         <Footer />

@@ -37,7 +37,7 @@ export default async function FestivalsPage() {
 
         <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 font-heading tracking-tight drop-shadow-lg">
-            All Festivals
+          Upcoming Festivals 
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto font-light drop-shadow-md">
             Discover all the amazing celebrations happening in Cabarrus County
@@ -59,6 +59,46 @@ export default async function FestivalsPage() {
           </div>
         )}
       </div>
+
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/gallery-4th-july-1.jpg"
+            alt=""
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-red-900/95" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold font-heading">
+            Stay Connected!
+          </h2>
+          <p className="mt-4 text-base md:text-lg">
+            Get updates on all of our upcoming events and festivals!
+          </p>
+
+          <form
+            action="/api/newsletter"
+            method="post"
+            className="mt-8 max-w-xl mx-auto flex flex-col sm:flex-row gap-3"
+          >
+            <input
+              name="email"
+              type="email"
+              required
+              placeholder="Your email address"
+              className="w-full px-4 py-3 rounded-full border border-white/40 bg-white/15 text-white placeholder:text-white/80 focus:outline-none focus:border-white"
+            />
+            <button
+              type="submit"
+              className="px-7 py-3 rounded-full bg-[#022154] text-white font-heading font-bold hover:bg-[#01163a] transition-colors whitespace-nowrap"
+            >
+              Join Mailing List
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
   );
 }
