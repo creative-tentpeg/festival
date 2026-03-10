@@ -85,8 +85,6 @@ export default async function FestivalsPage() {
             buttonClassName="px-7 py-3 rounded-full bg-[#022154] text-white font-heading font-bold hover:bg-[#01163a] transition-colors whitespace-nowrap"
             buttonLabel="Join Mailing List"
             inputPlaceholder="Your email address"
-            successClassName="mt-3 text-sm text-white"
-            errorClassName="mt-3 text-sm text-red-100"
           />
         </div>
       </section>

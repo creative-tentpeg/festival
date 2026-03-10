@@ -45,8 +45,6 @@ export async function POST(req: Request) {
     }
 
     const apiKey = process.env.RESEND_API_KEY;
-    const audienceId = process.env.RESEND_AUDIENCE_ID;
-    const envSegmentId = process.env.RESEND_SEGMENT_ID;
     if (!apiKey) {
       console.error("Missing RESEND_API_KEY environment variable");
       return handleError(
@@ -60,96 +58,37 @@ export async function POST(req: Request) {
     const resend = new Resend(apiKey);
     let contactSaved = false;
 
-    let discoveredSegmentId: string | undefined;
-    if (!envSegmentId) {
-      const listedSegments = await resend.segments.list({ limit: 1 });
-      if (!listedSegments.error) {
-        discoveredSegmentId = listedSegments.data?.data?.[0]?.id;
-      }
-    }
-
-    const segmentId = envSegmentId || discoveredSegmentId;
-
-    const contactCreateAttempts: Array<
-      | {
-          audienceId: string;
-          email: string;
-          unsubscribed: boolean;
-        }
-      | {
-          email: string;
-          unsubscribed: boolean;
-          segments?: { id: string }[];
-        }
-    > = [];
-
-    if (audienceId) {
-      contactCreateAttempts.push({
-        audienceId,
-        email,
-        unsubscribed: false,
-      });
-    }
-
-    contactCreateAttempts.push({
-      email,
-      unsubscribed: false,
-      ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
-    });
-
-    contactCreateAttempts.push({
+    const created = await resend.contacts.create({
       email,
       unsubscribed: false,
     });
 
-    const attemptErrors: unknown[] = [];
+    if (!created.error) {
+      contactSaved = true;
+    } else {
+      const existing = await resend.contacts.get({ email });
 
-    for (const createPayload of contactCreateAttempts) {
-      const createContact = await resend.contacts.create(createPayload);
-      if (!createContact.error) {
-        contactSaved = true;
-        break;
+      if (!existing.error) {
+        const updated = await resend.contacts.update({
+          email,
+          unsubscribed: false,
+        });
+        contactSaved = !updated.error;
       }
 
-      const updatePayload =
-        "audienceId" in createPayload
-          ? {
-              audienceId: createPayload.audienceId,
-              email,
-              unsubscribed: false,
-            }
-          : {
-              email,
-              unsubscribed: false,
-            };
-
-      const updateContact = await resend.contacts.update(updatePayload);
-      if (!updateContact.error) {
-        contactSaved = true;
-        break;
+      if (!contactSaved) {
+        console.error("Resend contact save failed:", {
+          email,
+          createError: created.error,
+          getError: existing.error,
+        });
+        return handleError(
+          "contact_save_failed",
+          "Could not save contact in Resend. Check API key permissions for Contacts.",
+          "/?newsletter_error=contact_save_failed",
+          500,
+        );
       }
-
-      attemptErrors.push({
-        createPayload,
-        createError: createContact.error,
-        updateError: updateContact.error,
-      });
-    }
-
-    if (!contactSaved) {
-      console.error("Resend contact upsert failed after all attempts:", {
-        email,
-        audienceId,
-        envSegmentId,
-        discoveredSegmentId,
-        attemptErrors,
-      });
-      return handleError(
-        "contact_save_failed",
-        "Could not save contact in Resend. Check API key permissions and audience/segment configuration.",
-        "/?newsletter_error=contact_save_failed",
-        500,
-      );
     }
 
     const { error } = await resend.emails.send({

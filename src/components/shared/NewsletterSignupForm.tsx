@@ -20,8 +20,8 @@ export function NewsletterSignupForm({
   buttonClassName,
   buttonLabel = "Subscribe",
   inputPlaceholder = "Your email",
-  successClassName = "mt-3 text-sm text-green-200",
-  errorClassName = "mt-3 text-sm text-red-200",
+  successClassName = "mt-3 inline-block rounded-md bg-[#022154] px-3 py-2 text-sm text-white",
+  errorClassName = "mt-3 inline-block rounded-md bg-yellow-300 px-3 py-2 text-sm text-black",
 }: NewsletterSignupFormProps) {
   const [email, setEmail] = useState("");
   const [state, setState] = useState<SubmitState>("idle");

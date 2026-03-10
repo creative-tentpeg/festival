@@ -109,8 +109,6 @@ export function Footer() {
               buttonClassName="w-full px-4 py-2 bg-[#01163a] text-white font-semibold rounded-lg hover:bg-[#00102b] transition-colors"
               buttonLabel="Subscribe"
               inputPlaceholder="Your email"
-              successClassName="mt-2 text-xs text-white"
-              errorClassName="mt-2 text-xs text-red-200"
             />
           </div>
         </div>

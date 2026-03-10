@@ -8,7 +8,7 @@ import { NewsletterSignupForm } from "@/components/shared/NewsletterSignupForm";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Cabarrus Festivals",
   description:
     "Discover upcoming festivals in Cabarrus County, including July 4th celebrations, Oktoberfest, and more.",
   alternates: {
@@ -187,8 +187,6 @@ export default async function Home() {
             buttonClassName="px-7 py-3 rounded-full bg-[#022154] text-white font-heading font-bold hover:bg-[#01163a] transition-colors whitespace-nowrap"
             buttonLabel="Join Mailing List"
             inputPlaceholder="Your email address"
-            successClassName="mt-3 text-sm text-white"
-            errorClassName="mt-3 text-sm text-red-100"
           />
         </div>
       </section>

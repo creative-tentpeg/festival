@@ -68,6 +68,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [{ url: "/images/cabarrus-logo.png", type: "image/png" }],
+    shortcut: ["/images/cabarrus-logo.png"],
+    apple: [{ url: "/images/cabarrus-logo.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
