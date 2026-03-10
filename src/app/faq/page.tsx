@@ -88,13 +88,13 @@ const faqData = [
         id: "tickets-1",
         question: "How much are tickets?",
         answer:
-          "General admission is FREE! VIP tickets are available for $75 and include exclusive perks such as dedicated cash bar access, guaranteed seating, a free Irish dancing lesson, a free professional portrait, and whiskey tasting.",
+          "General admission is FREE! VIP tickets are available for $75 and include exclusive perks such as dedicated cash bar access, guaranteed seating and much more! ",
       },
       {
         id: "tickets-2",
         question: "How do I purchase VIP tickets?",
         answer:
-          "VIP tickets can be purchased through our online ticketing system. Visit the link provided on our website or contact info@cabarruscelticfestival.com for more details.",
+          "VIP tickets can be purchased through our online ticketing system. Visit the link provided on our website or contact info@cabarrusfestivals.com for more details.",
       },
     ],
   },
@@ -116,13 +116,13 @@ const faqData = [
         id: "food-1",
         question: "What food options will be available?",
         answer:
-          "We will have multiple local food trucks offering a variety of cuisines, including Scottish and Irish national dishes, traditional festival fare, and vegetarian options.",
+          "We will have multiple local food trucks offering a variety of cuisines, including special themed options depending on the event! ",
       },
       {
         id: "food-2",
         question: "Will alcohol be served?",
         answer:
-          "Yes, we will have beer and whiskey available for purchase. A custom-brewed festival beer has been created specifically for this event. The venue features a full bar.",
+          "Yes, Cabarrus Brewing will have a large selection beer available for purchase. A custom-brewed festival beer has been created specifically for these events!",
       },
       {
         id: "food-3",
@@ -139,19 +139,19 @@ const faqData = [
         id: "vendors-1",
         question: "What vendors will be present?",
         answer:
-          "We will have local artisans and Celtic-themed vendors selling crafts, jewelry, clothing, and unique handmade goods. Browse our vibrant vendor marketplace!",
+          "We will have local artisans and themed vendors selling crafts, jewelry, clothing, and unique handmade goods. Browse our vibrant vendor marketplace!",
       },
       {
         id: "vendors-2",
         question: "Is this event family-friendly?",
         answer:
-          "Yes, the Cabarrus Celtic Festival is a family-friendly celebration. Children are welcome, and we have special activities and entertainment designed for families.",
+          "Yes, the Cabarrus Festivals are all a family-friendly celebration. Children are welcome, and we have special activities and entertainment designed for families.",
       },
       {
         id: "vendors-3",
         question: "Is the venue wheelchair accessible?",
         answer:
-          "Yes, Cabarrus Brewing Co. is wheelchair accessible. Please let us know if you need any accommodations by contacting info@cabarruscelticfestival.com.",
+          "Yes, Cabarrus Brewing Co. is wheelchair accessible. Please let us know if you need any accommodations by contacting info@cabarrusfestivals.com.",
       },
     ],
   },
@@ -162,13 +162,13 @@ const faqData = [
         id: "practical-1",
         question: "Are pets allowed?",
         answer:
-          "Service animals are welcome. For other pets, please contact us at info@cabarruscelticfestival.com to inquire about our pet policy.",
+          "Inside the brewery only service animals are permitted. Pets are allowed in the beer garden as long as they are leashed. ",
       },
       {
         id: "practical-2",
         question: "Who can I contact with additional questions?",
         answer:
-          "Feel free to reach out to us at info@cabarruscelticfestival.com or call 704.997.1964. You can also visit our Contact page for more information.",
+          "Feel free to reach out to us at info@cabarrusfestivals.com or call 704.997.1964. You can also visit our Contact page for more information.",
       },
       {
         id: "practical-3",
