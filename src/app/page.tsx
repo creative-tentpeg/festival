@@ -1,9 +1,33 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Metadata } from "next";
 import { cms } from "@/lib/cms/client";
 import { FestivalCard } from "@/components/shared/FestivalCard";
 import { NextFestivalTimer } from "@/components/shared/NextFestivalTimer";
 import { ArrowRight } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Discover upcoming festivals in Cabarrus County, including July 4th celebrations, Oktoberfest, and more.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Cabarrus Festivals",
+    description:
+      "Discover upcoming festivals in Cabarrus County, including July 4th celebrations, Oktoberfest, and more.",
+    url: "https://cabarrusfestivals.com",
+    images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cabarrus Festivals",
+    description:
+      "Discover upcoming festivals in Cabarrus County, including July 4th celebrations, Oktoberfest, and more.",
+    images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
+  },
+};
 
 export default async function Home() {
   const upcomingFestivals = await cms.getUpcomingFestivals(3);

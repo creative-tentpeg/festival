@@ -21,8 +21,53 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Cabarrus Festivals",
-  description: "Your guide to festivals in Cabarrus County.",
+  metadataBase: new URL("https://cabarrusfestivals.com"),
+  title: {
+    default: "Cabarrus Festivals",
+    template: "%s | Cabarrus Festivals",
+  },
+  description:
+    "Community-driven festivals in Cabarrus County: food, music, culture, and family experiences all year long.",
+  applicationName: "Cabarrus Festivals",
+  keywords: [
+    "Cabarrus Festivals",
+    "Cabarrus County events",
+    "Concord NC festivals",
+    "North Carolina festivals",
+    "family festivals",
+    "music and food festivals",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://cabarrusfestivals.com",
+    siteName: "Cabarrus Festivals",
+    title: "Cabarrus Festivals",
+    description:
+      "Community-driven festivals in Cabarrus County: food, music, culture, and family experiences all year long.",
+    images: [
+      {
+        url: "https://i.imgur.com/Tg5iY0r.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Cabarrus Festivals",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cabarrus Festivals",
+    description:
+      "Community-driven festivals in Cabarrus County: food, music, culture, and family experiences all year long.",
+    images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

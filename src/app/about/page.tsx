@@ -9,6 +9,21 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: page.seo.title,
     description: page.seo.description,
+    alternates: {
+      canonical: "/about",
+    },
+    openGraph: {
+      title: page.seo.title,
+      description: page.seo.description,
+      url: "https://cabarrusfestivals.com/about",
+      images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.seo.title,
+      description: page.seo.description,
+      images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
+    },
   };
 }
 

@@ -2,8 +2,23 @@ import { FAQAccordion } from "@/components/faq/FAQAccordion";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FAQ | Cabarrus Festivals",
+  title: "FAQ",
   description: "Frequently asked questions about Cabarrus Celtic Festival",
+  alternates: {
+    canonical: "/faq",
+  },
+  openGraph: {
+    title: "FAQ | Cabarrus Festivals",
+    description: "Frequently asked questions about Cabarrus Festival.",
+    url: "https://cabarrusfestivals.com/faq",
+    images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ | Cabarrus Festivals",
+    description: "Frequently asked questions about Cabarrus Festival.",
+    images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
+  },
 };
 
 const faqData = [

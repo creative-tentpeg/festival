@@ -3,8 +3,23 @@ import { FestivalCard } from "@/components/shared/FestivalCard";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "All Festivals | Cabarrus Festivals",
+  title: "All Festivals",
   description: "Browse all upcoming festivals in Cabarrus County.",
+  alternates: {
+    canonical: "/festivals",
+  },
+  openGraph: {
+    title: "All Festivals | Cabarrus Festivals",
+    description: "Browse all upcoming festivals in Cabarrus County.",
+    url: "https://cabarrusfestivals.com/festivals",
+    images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "All Festivals | Cabarrus Festivals",
+    description: "Browse all upcoming festivals in Cabarrus County.",
+    images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
+  },
 };
 
 export default async function FestivalsPage() {
