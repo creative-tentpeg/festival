@@ -45,6 +45,8 @@ export async function POST(req: Request) {
     }
 
     const apiKey = process.env.RESEND_API_KEY;
+    const contactsApiKey = process.env.RESEND_CONTACTS_API_KEY || apiKey;
+
     if (!apiKey) {
       console.error("Missing RESEND_API_KEY environment variable");
       return handleError(
@@ -56,39 +58,52 @@ export async function POST(req: Request) {
     }
 
     const resend = new Resend(apiKey);
+    const contactsResend = new Resend(contactsApiKey);
     let contactSaved = false;
 
-    const created = await resend.contacts.create({
+    const created = await contactsResend.contacts.create({
       email,
-      unsubscribed: false,
     });
 
     if (!created.error) {
       contactSaved = true;
     } else {
-      const existing = await resend.contacts.get({ email });
+      // If contact already exists, it's already saved in Resend.
+      const createErrorText = `${created.error.name || ""} ${created.error.message || ""}`.toLowerCase();
+      if (
+        createErrorText.includes("already") &&
+        createErrorText.includes("exist")
+      ) {
+        contactSaved = true;
+      }
+    }
+
+    if (!contactSaved) {
+      const existing = await contactsResend.contacts.get({ email });
 
       if (!existing.error) {
-        const updated = await resend.contacts.update({
+        const updated = await contactsResend.contacts.update({
           email,
           unsubscribed: false,
         });
-        contactSaved = !updated.error;
+        if (!updated.error) {
+          contactSaved = true;
+        }
       }
+    }
 
-      if (!contactSaved) {
-        console.error("Resend contact save failed:", {
-          email,
-          createError: created.error,
-          getError: existing.error,
-        });
-        return handleError(
-          "contact_save_failed",
-          "Could not save contact in Resend. Check API key permissions for Contacts.",
-          "/?newsletter_error=contact_save_failed",
-          500,
-        );
-      }
+    if (!contactSaved) {
+      console.error("Resend contact save failed:", {
+        email,
+        createError: created.error,
+        usingSeparateContactsKey: Boolean(process.env.RESEND_CONTACTS_API_KEY),
+      });
+      return handleError(
+        "contact_save_failed",
+        "Could not save contact in Resend. Use a full-access key in RESEND_CONTACTS_API_KEY.",
+        "/?newsletter_error=contact_save_failed",
+        500,
+      );
     }
 
     const { error } = await resend.emails.send({
