@@ -3,7 +3,10 @@ import { Resend } from "resend";
 
 export async function POST(req: Request) {
   const redirectTo = (path: string) =>
-    NextResponse.redirect(new URL(path, req.url));
+    new NextResponse(null, {
+      status: 303,
+      headers: { Location: path },
+    });
 
   try {
     const formData = await req.formData();
@@ -16,6 +19,7 @@ export async function POST(req: Request) {
     }
 
     const apiKey = process.env.RESEND_API_KEY;
+    const audienceId = process.env.RESEND_AUDIENCE_ID;
     if (!apiKey) {
       console.error("Missing RESEND_API_KEY environment variable");
       return redirectTo("/?newsletter_error=email_not_configured");
@@ -25,12 +29,14 @@ export async function POST(req: Request) {
 
     // Save subscriber as a Resend contact (upsert behavior).
     const createContact = await resend.contacts.create({
+      ...(audienceId ? { audienceId } : {}),
       email,
       unsubscribed: false,
     });
 
     if (createContact.error) {
       const updateContact = await resend.contacts.update({
+        ...(audienceId ? { audienceId } : {}),
         email,
         unsubscribed: false,
       });
