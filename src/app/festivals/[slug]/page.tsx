@@ -15,10 +15,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!festival) return {};
 
   return {
-    title: `${festival.seo.title} | Cabarrus Festivals`,
+    title: festival.seo.title,
     description: festival.seo.description,
+    alternates: {
+      canonical: `/festivals/${festival.slug}`,
+    },
     openGraph: {
-      images: festival.seo.ogImage ? [festival.seo.ogImage] : [],
+      title: festival.seo.title,
+      description: festival.seo.description,
+      url: `https://cabarrusfestivals.com/festivals/${festival.slug}`,
+      images: festival.seo.ogImage
+        ? [festival.seo.ogImage]
+        : ["https://i.imgur.com/Tg5iY0r.jpeg"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: festival.seo.title,
+      description: festival.seo.description,
+      images: festival.seo.ogImage ? [festival.seo.ogImage] : ["https://i.imgur.com/Tg5iY0r.jpeg"],
     },
   };
 }
@@ -188,12 +202,29 @@ export default async function FestivalDetailPage({ params }: Props) {
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
                     >
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        className="w-5 h-5 mr-2 fill-current"
+                      >
+                        <path d="M21 12.23c0-.71-.06-1.39-.18-2.04H12v3.86h5.04a4.32 4.32 0 0 1-1.87 2.84v2.36h3.03c1.77-1.63 2.8-4.04 2.8-7.02Z" />
+                        <path d="M12 21.5c2.53 0 4.65-.84 6.2-2.27l-3.03-2.36c-.84.57-1.92.91-3.17.91-2.44 0-4.5-1.65-5.24-3.87H3.63v2.44A9.36 9.36 0 0 0 12 21.5Z" />
+                        <path d="M6.76 13.91a5.62 5.62 0 0 1 0-3.58V7.89H3.63a9.5 9.5 0 0 0 0 8.46l3.13-2.44Z" />
+                        <path d="M12 6.45c1.38 0 2.61.47 3.58 1.4l2.68-2.68C16.64 3.69 14.52 2.86 12 2.86A9.36 9.36 0 0 0 3.63 7.89l3.13 2.44c.74-2.22 2.8-3.88 5.24-3.88Z" />
+                      </svg>
                       Save to Google Calendar
                     </a>
                     <a
                       href={appleCalendarUrl}
                       className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
                     >
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        className="w-5 h-5 mr-2 fill-current"
+                      >
+                        <path d="M16.37 1.43c0 1.14-.42 2.24-1.16 3.04-.78.84-2.07 1.48-3.2 1.43-.14-1.11.42-2.27 1.14-3.05.79-.88 2.15-1.51 3.22-1.42Zm3.8 16.61c-.56 1.25-.82 1.8-1.53 2.9-.99 1.53-2.38 3.43-4.1 3.45-1.53.02-1.93-1-4-1-2.07 0-2.51 1.02-4.03.98-1.72-.03-3.04-1.74-4.03-3.27C-.25 16.82-1.6 8.96 2.23 5.62 3.58 4.43 5.3 3.73 6.92 3.73c1.65 0 2.69 1.03 4.05 1.03 1.32 0 2.13-1.03 4.03-1.03 1.45 0 2.97.79 4.31 2.15-3.57 1.97-2.99 7.08.86 8.7Z" />
+                      </svg>
                       Save to Apple Calendar
                     </a>
                   </div>
