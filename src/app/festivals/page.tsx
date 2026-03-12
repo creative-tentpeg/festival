@@ -41,7 +41,7 @@ export default async function FestivalsPage() {
           Upcoming Festivals 
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto font-light drop-shadow-md" data-aos="fade-up" data-aos-delay="140">
-            Discover all the amazing celebrations happening in Cabarrus County
+          Don't Miss These Amazing Upcoming Events! 
           </p>
         </div>
       </section>

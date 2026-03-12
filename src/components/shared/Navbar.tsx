@@ -73,7 +73,7 @@ export function Navbar() {
           <div className={cn("shrink-0 flex items-center", scrolled ? "pt-1" : "pt-4")}>
             <Link href="/" className="group flex items-center space-x-2">
               <Image
-                src="/images/cabarrus-logo.png"
+                src="/images/cabarrus-white-logo.png"
                 alt="Cabarrus Festivals Logo"
                 width={250}
                 height={120}

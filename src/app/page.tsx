@@ -72,7 +72,7 @@ export default async function Home() {
           </div>
           <div className="hero-logo-enter flex justify-center md:justify-end flex-none">
             <Image
-              src="/images/cabarrus-white-logo.png"
+              src="/images/cabarrus-logo.png"
               alt="Celtic Logo"
               width={600}
               height={600}
@@ -122,6 +122,35 @@ export default async function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/bg-the-lantern.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[#022154]/90" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <p className="text-xl md:text-2xl font-heading font-bold" data-aos="fade-up">
+            A portion of all sales go toward protecting the vulnerable in Cabarrus County.
+          </p>
+          <a
+            href="https://thelantern.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex mt-8 px-8 py-3 rounded-full bg-red-500 text-[#ffffff] font-heading font-bold hover:bg-[#AC0725] transition-colors"
+            data-aos="zoom-in"
+            data-aos-delay="120"
+          >
+            Learn More
+          </a>
         </div>
       </section>
 
