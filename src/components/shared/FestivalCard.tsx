@@ -9,7 +9,6 @@ interface FestivalCardProps {
 }
 
 export function FestivalCard({ festival }: FestivalCardProps) {
-  const showCelticOverlayLogo = festival.slug === "cabarrus-celtic-festival";
   const isExternal = Boolean(
     festival.officialUrl && festival.officialUrl.startsWith("http"),
   );
@@ -27,20 +26,20 @@ export function FestivalCard({ festival }: FestivalCardProps) {
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        {showCelticOverlayLogo && (
+        {festival.overlayLogo && (
+          <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+        )}
+        {festival.overlayLogo && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <Image
-              src="/images/cabarrus-logo.png"
+              src={festival.overlayLogo}
               alt="Cabarrus Festivals"
               width={150}
               height={150}
-              className="h-auto w-24 sm:w-28 md:w-32"
+              className={festival.overlayLogoClassName ?? "h-auto w-24 sm:w-28 md:w-32"}
             />
           </div>
         )}
-        <div className="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded text-xs font-bold uppercase tracking-wide text-gray-800">
-          {festival.category}
-        </div>
       </div>
       <div className="p-4 flex-1 flex flex-col">
         <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-festival-green transition-colors">

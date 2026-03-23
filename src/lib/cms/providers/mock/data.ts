@@ -46,6 +46,8 @@ export const mockFestivals: Festival[] = [
     venueName: "Cabarrus Brewing Co.",
     venueAddress: "Cabarrus Brewing Co.",
     cityState: "Concord, NC",
+    overlayLogo: "/images/white-logo.png",
+    overlayLogoClassName: "h-auto w-24 sm:w-28 md:w-32",
     heroImage: "/images/bg.jpg",
     cardImage: "/images/bg.jpg",
     shortDescription:
@@ -90,6 +92,8 @@ export const mockFestivals: Festival[] = [
     venueName: "Cabarrus Brewing Co.",
     venueAddress: "Cabarrus Brewing Co.",
     cityState: "Concord, NC",
+    overlayLogo: "/images/usa-logo.png",
+    overlayLogoClassName: "h-auto w-28 sm:w-32 md:w-36",
     heroImage: "/images/4-july.jpg",
     cardImage: "/images/4-july.jpg",
     shortDescription:
@@ -125,17 +129,19 @@ export const mockFestivals: Festival[] = [
   {
     slug: "oktoberfest-2026",
     name: "Oktoberfest!",
-    tagline: "Two days of autumn flavors, music, and celebration",
+    tagline: "Three days of autumn flavors, music, and celebration",
     category: "food",
-    startDate: "2026-10-03T11:00:00Z",
-    endDate: "2026-10-04T23:00:00Z",
+    startDate: "2026-09-25T11:00:00Z",
+    endDate: "2026-09-27T23:00:00Z",
     venueName: "Cabarrus Brewing Co.",
     venueAddress: "Cabarrus Brewing Co.",
     cityState: "Concord, NC",
+    overlayLogo: "/images/Oktoberfest-logo.png",
+    overlayLogoClassName: "h-auto w-28 sm:w-32 md:w-36",
     heroImage: "/images/ocktober-fest.jpg",
     cardImage: "/images/ocktober-fest.jpg",
     shortDescription:
-      "Celebrate Oktoberfest on October 3rd and 4th, 2026 with food, drinks, music, and community fun.",
+      "Celebrate Oktoberfest on Sept 25-27, 2026 with food, drinks, music, and community fun.",
     longDescription:
       "Oktoberfest! brings two full days of festive energy to Cabarrus County with local vendors, live entertainment, and seasonal favorites in a welcoming community setting.",
     officialUrl: "#",
@@ -161,7 +167,7 @@ export const mockFestivals: Festival[] = [
     seo: {
       title: "Oktoberfest 2026 | Concord, NC",
       description:
-        "Join Oktoberfest on October 3rd and 4th, 2026 for food, music, and seasonal celebration in Concord.",
+        "Join Oktoberfest on Sept 25-27, 2026 for food, music, and seasonal celebration in Concord.",
     },
   },
 ];

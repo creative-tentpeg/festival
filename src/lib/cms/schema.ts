@@ -39,6 +39,8 @@ export const FestivalSchema = z.object({
   venueName: z.string(),
   venueAddress: z.string(),
   cityState: z.string(),
+  overlayLogo: ImageSchema.optional(),
+  overlayLogoClassName: z.string().optional(),
   heroImage: ImageSchema,
   cardImage: ImageSchema,
   shortDescription: z.string(),
