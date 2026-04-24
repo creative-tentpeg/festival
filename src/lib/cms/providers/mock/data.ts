@@ -87,8 +87,8 @@ export const mockFestivals: Festival[] = [
     name: "July 4th Anniversary Festival",
     tagline: "Celebrate freedom, community, and summer fun",
     category: "seasonal",
-    startDate: "2026-07-04T10:00:00Z",
-    endDate: "2026-07-04T22:00:00Z",
+    startDate: "2026-07-04T11:00:00-04:00",
+    endDate: "2026-07-04T18:00:00-04:00",
     venueName: "Cabarrus Brewing Co.",
     venueAddress: "Cabarrus Brewing Co.",
     cityState: "Concord, NC",
@@ -99,7 +99,7 @@ export const mockFestivals: Festival[] = [
     shortDescription:
       "A festive July 4th celebration with music, local vendors, family activities, and community spirit.",
     longDescription:
-      "Join us for the July 4th Anniversary Festival in the heart of Concord. Enjoy local food vendors, live entertainment, family-friendly activities, and a vibrant community celebration.",
+      "This July 4th is no ordinary Independence Day, it's the 250th birthday of this great nation, and we want to celebrate it together, as a community. No need to stress about planning the perfect backyard cookout or fighting traffic to catch distant parades, just show up and let's share this milestone the way it was meant to be celebrated: with neighbors, friends, and community. There will be great food (cookout style), live music, and plenty for kids to enjoy in the Kid Zone. We can't wait to celebrate with you!",
     officialUrl: "#",
     highlights: [
       "Live Music",
@@ -108,9 +108,9 @@ export const mockFestivals: Festival[] = [
       "Community Celebration",
     ],
     schedule: [
-      { time: "10:00", title: "Festival Opens" },
+      { time: "11:00", title: "Festival Opens" },
       { time: "14:00", title: "Live Music and Performances" },
-      { time: "22:00", title: "Festival Closes" },
+      { time: "18:00", title: "Festival Closes" },
     ],
     faqs: [],
     gallery: [
@@ -131,8 +131,8 @@ export const mockFestivals: Festival[] = [
     name: "Oktoberfest!",
     tagline: "Three days of autumn flavors, music, and celebration",
     category: "food",
-    startDate: "2026-09-25T11:00:00Z",
-    endDate: "2026-09-27T23:00:00Z",
+    startDate: "2026-09-25T11:00:00-04:00",
+    endDate: "2026-09-27T23:00:00-04:00",
     venueName: "Cabarrus Brewing Co.",
     venueAddress: "Cabarrus Brewing Co.",
     cityState: "Concord, NC",

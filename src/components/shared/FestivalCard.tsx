@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Festival } from "@/lib/cms/types";
-import { formatDate } from "@/lib/utils";
+import { formatDateRange, formatTimeRange } from "@/lib/utils";
 import { Calendar, MapPin } from "lucide-react";
 
 interface FestivalCardProps {
@@ -52,7 +52,11 @@ export function FestivalCard({ festival }: FestivalCardProps) {
         <div className="mt-auto space-y-2 text-sm text-gray-500">
           <div className="flex items-center">
             <Calendar className="w-4 h-4 mr-2 text-festival-green" />
-            <span>{formatDate(festival.startDate)}</span>
+            <span>
+              {formatDateRange(festival.startDate, festival.endDate)}
+              {" | "}
+              {formatTimeRange(festival.startDate, festival.endDate)}
+            </span>
           </div>
           <div className="flex items-center">
             <MapPin className="w-4 h-4 mr-2 text-festival-green" />

@@ -1,5 +1,5 @@
 import { cms } from "@/lib/cms/client";
-import { formatDate } from "@/lib/utils";
+import { formatDateRange, formatTimeRange } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Calendar, MapPin } from "lucide-react";
@@ -112,7 +112,11 @@ export default async function FestivalDetailPage({ params }: Props) {
             <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-lg">
               <div className="flex items-center">
                 <Calendar className="w-6 h-6 mr-2 text-festival-green" />
-                <span>{formatDate(festival.startDate)}</span>
+                <span>
+                  {formatDateRange(festival.startDate, festival.endDate)}
+                  {" | "}
+                  {formatTimeRange(festival.startDate, festival.endDate)}
+                </span>
               </div>
               <div className="flex items-center">
                 <MapPin className="w-6 h-6 mr-2 text-festival-green" />
@@ -185,6 +189,20 @@ export default async function FestivalDetailPage({ params }: Props) {
                   Event Details
                 </h3>
                 <div className="space-y-4">
+                  <div className="space-y-2 text-gray-700">
+                    <p>
+                      <span className="font-semibold text-gray-900">Date:</span>{" "}
+                      {formatDateRange(festival.startDate, festival.endDate)}
+                    </p>
+                    <p>
+                      <span className="font-semibold text-gray-900">Time:</span>{" "}
+                      {formatTimeRange(festival.startDate, festival.endDate)}
+                    </p>
+                    <p>
+                      <span className="font-semibold text-gray-900">Location:</span>{" "}
+                      {festival.venueName}, {festival.cityState}
+                    </p>
+                  </div>
                   {festival.ticketUrl && (
                     <a
                       href={festival.ticketUrl}
