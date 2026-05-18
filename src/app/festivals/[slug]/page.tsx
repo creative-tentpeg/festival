@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Calendar, MapPin } from "lucide-react";
 import { Metadata } from "next";
+import { NewsletterSignupForm } from "@/components/shared/NewsletterSignupForm";
 
 interface Props {
   params: { slug: string } | Promise<{ slug: string }>;
@@ -79,9 +80,12 @@ export default async function FestivalDetailPage({ params }: Props) {
     festival.shortDescription,
   )}&location=${encodeURIComponent(`${festival.venueName}, ${festival.cityState}`)}`;
   const appleCalendarUrl = `/api/calendar/${festival.slug}`;
+  const showStayConnectedSection =
+    festival.slug === "july-4th-anniversary-festival" ||
+    festival.slug === "oktoberfest-2026";
 
   return (
-    <div className="bg-white pb-16">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -140,10 +144,26 @@ export default async function FestivalDetailPage({ params }: Props) {
                 <div className="prose prose-lg max-w-none text-gray-600">
                   <p>{festival.longDescription}</p>
                 </div>
+                <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
+                  >
+                    Sponsor This Event
+                  </a>
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
+                  >
+                    Be a Vendor
+                  </a>
+                </div>
 
                 {festival.highlights.length > 0 && (
                   <div className="mt-8">
-                    <h3 className="text-xl font-semibold mb-3">Highlights</h3>
+                    <h3 className="text-xl font-semibold mb-3">
+                      {festival.highlightsTitle ?? "Highlights"}
+                    </h3>
                     <ul className="flex flex-wrap gap-2">
                       {festival.highlights.map((highlight, idx) => (
                         <li
@@ -289,6 +309,38 @@ export default async function FestivalDetailPage({ params }: Props) {
           </div>
         </div>
       </div>
+
+      {showStayConnectedSection && (
+        <section className="relative py-30 mt-16 overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/people-celebrating.jpg"
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-red-900/95" />
+          </div>
+
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <h2 className="text-3xl md:text-4xl font-bold font-heading">
+              Stay Connected!
+            </h2>
+            <p className="mt-4 text-base md:text-lg">
+              Get updates on all of our upcoming events and festivals!
+            </p>
+
+            <NewsletterSignupForm
+              formClassName="mt-8 max-w-xl mx-auto flex flex-col sm:flex-row gap-3"
+              inputClassName="w-full px-4 py-3 rounded-full border border-white/40 bg-white/15 text-white placeholder:text-white/80 focus:outline-none focus:border-white"
+              buttonClassName="px-7 py-3 rounded-full bg-[#022154] text-white font-heading font-bold hover:bg-[#01163a] transition-colors whitespace-nowrap"
+              buttonLabel="Join Mailing List"
+              inputPlaceholder="Your email address"
+            />
+          </div>
+        </section>
+      )}
     </div>
   );
 }

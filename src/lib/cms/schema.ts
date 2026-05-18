@@ -45,6 +45,7 @@ export const FestivalSchema = z.object({
   cardImage: ImageSchema,
   shortDescription: z.string(),
   longDescription: z.string(),
+  highlightsTitle: z.string().optional(),
   ticketUrl: z.string().url().optional(),
   officialUrl: z.string().url().optional(),
   highlights: z.array(z.string()),

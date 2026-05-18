@@ -129,7 +129,7 @@ export const mockFestivals: Festival[] = [
   {
     slug: "oktoberfest-2026",
     name: "Oktoberfest!",
-    tagline: "Three days of autumn flavors, music, and celebration",
+    tagline: "Prost, Cabarrus. Oktoberfest is back!",
     category: "food",
     startDate: "2026-09-25T11:00:00-04:00",
     endDate: "2026-09-27T23:00:00-04:00",
@@ -143,7 +143,8 @@ export const mockFestivals: Festival[] = [
     shortDescription:
       "Celebrate Oktoberfest on Sept 25-27, 2026 with food, drinks, music, and community fun.",
     longDescription:
-      "Oktoberfest! brings two full days of festive energy to Cabarrus County with local vendors, live entertainment, and seasonal favorites in a welcoming community setting.",
+      "Oktoberfest is back for three full days of fall fun! Local vendors, live entertainment, cold drafts, and the kind of  energy only Cabarrus can bring! ",
+    highlightsTitle: "Good beer tastes better with neighbors.",
     officialUrl: "#",
     highlights: [
       "Live Entertainment",
