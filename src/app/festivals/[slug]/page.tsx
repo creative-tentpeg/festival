@@ -83,6 +83,18 @@ export default async function FestivalDetailPage({ params }: Props) {
   const showStayConnectedSection =
     festival.slug === "july-4th-anniversary-festival" ||
     festival.slug === "oktoberfest-2026";
+  const sponsorUrl =
+    festival.slug === "july-4th-anniversary-festival"
+      ? "https://form.jotform.com/261375185043153"
+      : festival.slug === "oktoberfest-2026"
+        ? "https://form.jotform.com/261375768818170"
+        : "/contact";
+  const vendorUrl =
+    festival.slug === "july-4th-anniversary-festival"
+      ? "https://form.jotform.com/261137932645157"
+      : festival.slug === "oktoberfest-2026"
+        ? "https://form.jotform.com/261375226748161"
+        : "/contact";
 
   return (
     <div className="bg-white">
@@ -146,13 +158,17 @@ export default async function FestivalDetailPage({ params }: Props) {
                 </div>
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <a
-                    href="/contact"
+                    href={sponsorUrl}
+                    target={sponsorUrl.startsWith("http") ? "_blank" : undefined}
+                    rel={sponsorUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
                   >
                     Sponsor This Event
                   </a>
                   <a
-                    href="/contact"
+                    href={vendorUrl}
+                    target={vendorUrl.startsWith("http") ? "_blank" : undefined}
+                    rel={vendorUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
                   >
                     Be a Vendor
