@@ -32,6 +32,9 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const upcomingFestivals = await cms.getUpcomingFestivals(3);
+  const nextFestivalForTimer =
+    (await cms.getFestivalBySlug("july-4th-anniversary-festival")) ??
+    upcomingFestivals[0];
 
   return (
     <div className="bg-background min-h-screen">
@@ -83,11 +86,11 @@ export default async function Home() {
           </div>
         </div>
 
-        {upcomingFestivals[0] && (
+        {nextFestivalForTimer && (
           <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-30 px-4 w-full flex justify-center">
             <NextFestivalTimer
-              festivalName={upcomingFestivals[0].name}
-              startDate={upcomingFestivals[0].startDate}
+              festivalName={nextFestivalForTimer.name}
+              startDate={nextFestivalForTimer.startDate}
             />
           </div>
         )}

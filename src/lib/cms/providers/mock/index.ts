@@ -3,9 +3,11 @@ import { mockFestivals, mockPages } from './data';
 
 export class MockCMSProvider implements CMSClient {
   async getFestivals(): Promise<Festival[]> {
-    // Simulate network delay
-    // await new Promise(resolve => setTimeout(resolve, 100));
-    return mockFestivals;
+    const now = new Date();
+
+    return mockFestivals
+      .filter((festival) => festival.status === "upcoming" && new Date(festival.startDate) > now)
+      .sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
   }
 
   async getFestivalBySlug(slug: string): Promise<Festival | null> {
@@ -16,7 +18,7 @@ export class MockCMSProvider implements CMSClient {
   async getUpcomingFestivals(limit: number = 3): Promise<Festival[]> {
     const now = new Date();
     const upcoming = mockFestivals
-      .filter(f => new Date(f.startDate) > now)
+      .filter(f => f.status === "upcoming" && new Date(f.startDate) > now)
       .sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
     
     return upcoming.slice(0, limit);

@@ -75,7 +75,7 @@ export const mockFestivals: Festival[] = [
     faqs: [],
     gallery: ["/images/celtic-1.svg", "/images/celtic-2.svg"],
     sponsors: [],
-    status: "upcoming",
+    status: "completed",
     seo: {
       title: "Cabarrus Celtic Festival 2026 | Concord, NC",
       description:
