@@ -99,6 +99,8 @@ export default async function FestivalDetailPage({ params }: Props) {
       : festival.slug === "oktoberfest-2026"
         ? "https://form.jotform.com/261375226748161"
         : "/contact";
+  const showVendorButton =
+    festival.slug !== "july-4th-anniversary-festival";
 
   return (
     <div className="bg-white">
@@ -169,14 +171,16 @@ export default async function FestivalDetailPage({ params }: Props) {
                   >
                     Sponsor This Event
                   </a>
-                  <a
-                    href={vendorUrl}
-                    target={vendorUrl.startsWith("http") ? "_blank" : undefined}
-                    rel={vendorUrl.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
-                  >
-                    Be a Vendor
-                  </a>
+                  {showVendorButton && (
+                    <a
+                      href={vendorUrl}
+                      target={vendorUrl.startsWith("http") ? "_blank" : undefined}
+                      rel={vendorUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
+                    >
+                      Be a Vendor
+                    </a>
+                  )}
                 </div>
 
                 {festival.highlights.length > 0 && (
