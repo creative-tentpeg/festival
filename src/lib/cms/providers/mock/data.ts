@@ -88,7 +88,7 @@ export const mockFestivals: Festival[] = [
     tagline: "Celebrate freedom, community, and summer fun",
     category: "seasonal",
     startDate: "2026-07-04T11:00:00-04:00",
-    endDate: "2026-07-04T18:00:00-04:00",
+    endDate: "2026-07-04T20:00:00-04:00",
     venueName: "Cabarrus Brewing Co.",
     venueAddress: "Cabarrus Brewing Co.",
     cityState: "Concord, NC",
@@ -97,20 +97,19 @@ export const mockFestivals: Festival[] = [
     heroImage: "/images/4-july.jpg",
     cardImage: "/images/4-july.jpg",
     shortDescription:
-      "A festive July 4th celebration with music, local vendors, family activities, and community spirit.",
+      "A festive July 4th celebration with music, family activities, and community spirit.",
     longDescription:
       "This July 4th is no ordinary Independence Day, it's the 250th birthday of this great nation, and we want to celebrate it together, as a community. No need to stress about planning the perfect backyard cookout or fighting traffic to catch distant parades, just show up and let's share this milestone the way it was meant to be celebrated: with neighbors, friends, and community. There will be great food (cookout style), live music, and plenty for kids to enjoy in the Kid Zone. We can't wait to celebrate with you!",
     officialUrl: "#",
     highlights: [
       "Live Music",
       "Family Activities",
-      "Local Vendors",
       "Community Celebration",
     ],
     schedule: [
       { time: "11:00", title: "Festival Opens" },
       { time: "14:00", title: "Live Music and Performances" },
-      { time: "18:00", title: "Festival Closes" },
+      { time: "20:00", title: "Festival Closes" },
     ],
     faqs: [],
     gallery: [

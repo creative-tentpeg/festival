@@ -83,6 +83,10 @@ export default async function FestivalDetailPage({ params }: Props) {
   const showStayConnectedSection =
     festival.slug === "july-4th-anniversary-festival" ||
     festival.slug === "oktoberfest-2026";
+  const contentOverlapClass =
+    festival.slug === "july-4th-anniversary-festival"
+      ? "-mt-12 md:-mt-16"
+      : "-mt-20";
   const sponsorUrl =
     festival.slug === "july-4th-anniversary-festival"
       ? "https://form.jotform.com/261375185043153"
@@ -104,7 +108,7 @@ export default async function FestivalDetailPage({ params }: Props) {
       />
 
       {/* Hero Section */}
-      <div className="relative h-[60vh] w-full">
+      <div className="relative min-h-[82vh] w-full">
         <Image
           src={festival.heroImage}
           alt={festival.name}
@@ -113,19 +117,19 @@ export default async function FestivalDetailPage({ params }: Props) {
           priority
         />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 flex items-center justify-center pt-16">
+        <div className="absolute inset-0 z-20 flex justify-center px-4 pt-44 pb-20 md:pt-40 md:pb-16">
           <div className="text-center text-white px-4 max-w-4xl">
-            <span className="inline-block px-3 py-1 bg-festival-green rounded-full text-sm font-semibold mb-4 uppercase tracking-wider text-white">
+            <span className="inline-flex px-3 py-1 bg-festival-green rounded-full text-sm font-semibold mb-4 uppercase tracking-wider text-white">
               {festival.category}
             </span>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold mb-2">
               {festival.name}
             </h1>
-            <p className="text-xl md:text-2xl font-light text-gray-200 mb-8">
+            <p className="text-xl md:text-2xl font-light text-gray-200 mb-4">
               {festival.tagline}
             </p>
 
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-lg">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-lg">
               <div className="flex items-center">
                 <Calendar className="w-6 h-6 mr-2 text-festival-green" />
                 <span>
@@ -145,7 +149,7 @@ export default async function FestivalDetailPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 ${contentOverlapClass}`}>
         <div className="bg-white rounded-xl shadow-xl p-8 md:p-12">
           <div className="space-y-12">
               {/* About */}
