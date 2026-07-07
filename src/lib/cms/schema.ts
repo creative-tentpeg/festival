@@ -34,10 +34,10 @@ export const FestivalSchema = z.object({
   name: z.string(),
   tagline: z.string(),
   category: FestivalCategorySchema,
-  startDate: z.string().datetime(), // ISO string
-  endDate: z.string().datetime(),   // ISO string
-  venueName: z.string(),
-  venueAddress: z.string(),
+  startDate: z.string().datetime().optional(), // ISO string; omit if not yet confirmed
+  endDate: z.string().datetime().optional(),   // ISO string; omit if not yet confirmed
+  venueName: z.string().optional(),
+  venueAddress: z.string().optional(),
   cityState: z.string(),
   overlayLogo: ImageSchema.optional(),
   overlayLogoClassName: z.string().optional(),

@@ -83,49 +83,6 @@ export const mockFestivals: Festival[] = [
     },
   },
   {
-    slug: "july-4th-anniversary-festival",
-    name: "July 4th Anniversary Festival",
-    tagline: "Celebrate freedom, community, and summer fun",
-    category: "seasonal",
-    startDate: "2026-07-04T11:00:00-04:00",
-    endDate: "2026-07-04T20:00:00-04:00",
-    venueName: "Cabarrus Brewing Co.",
-    venueAddress: "Cabarrus Brewing Co.",
-    cityState: "Concord, NC",
-    overlayLogo: "/images/usa-logo.png",
-    overlayLogoClassName: "h-auto w-28 sm:w-32 md:w-36",
-    heroImage: "/images/4-july.jpg",
-    cardImage: "/images/4-july.jpg",
-    shortDescription:
-      "A festive July 4th celebration with music, family activities, and community spirit.",
-    longDescription:
-      "This July 4th is no ordinary Independence Day, it's the 250th birthday of this great nation, and we want to celebrate it together, as a community. No need to stress about planning the perfect backyard cookout or fighting traffic to catch distant parades, just show up and let's share this milestone the way it was meant to be celebrated: with neighbors, friends, and community. There will be great food (cookout style), live music, and plenty for kids to enjoy in the Kid Zone. We can't wait to celebrate with you!",
-    officialUrl: "#",
-    highlights: [
-      "Live Music",
-      "Family Activities",
-      "Community Celebration",
-    ],
-    schedule: [
-      { time: "11:00", title: "Festival Opens" },
-      { time: "14:00", title: "Live Music and Performances" },
-      { time: "20:00", title: "Festival Closes" },
-    ],
-    faqs: [],
-    gallery: [
-      "/images/gallery-4th-july-1.jpg",
-      "/images/4th-july-gallery-2.jpeg",
-      "/images/4th-july-gallery-3.jpg",
-    ],
-    sponsors: [],
-    status: "upcoming",
-    seo: {
-      title: "July 4th Anniversary Festival 2026 | Concord, NC",
-      description:
-        "Celebrate July 4th in Concord with live music, food, and family-friendly festival fun.",
-    },
-  },
-  {
     slug: "oktoberfest-2026",
     name: "Oktoberfest!",
     tagline: "Prost, Cabarrus. Oktoberfest is back!",
@@ -142,14 +99,15 @@ export const mockFestivals: Festival[] = [
     shortDescription:
       "Celebrate Oktoberfest on Sept 25-27, 2026 with food, drinks, music, and community fun.",
     longDescription:
-      "Oktoberfest is back for three full days of fall fun! Local vendors, live entertainment, cold drafts, and the kind of  energy only Cabarrus can bring! ",
+      "Raise your stein and join us September 25–27 for a weekend steeped in tradition! Our Oktoberfest celebration kicks off Friday evening at 4 PM, and when the clock strikes five, the ceremonial keg tapping officially opens the festivities in true Bavarian style. It's the moment the whole weekend builds from the first pour, the first cheers, and the beginning of three unforgettable days celebrating the rich German heritage of Cabarrus County.",
     highlightsTitle: "Good beer tastes better with neighbors.",
     officialUrl: "#",
     highlights: [
       "Live Entertainment",
-      "Seasonal Food & Drinks",
+      "Specialty Foods and Drinks",
       "Local Vendors",
       "Family-Friendly Atmosphere",
+      "Competitions and Prizes",
     ],
     schedule: [
       { time: "11:00", title: "Day 1 Opens" },
@@ -158,9 +116,12 @@ export const mockFestivals: Festival[] = [
     ],
     faqs: [],
     gallery: [
-      "/images/Oktoberfest-1.jpg",
-      "/images/Oktoberfest-2.jpg",
-      "/images/Oktoberfest-3.jpg",
+      "/images/oct1.jpg",
+      "/images/oct2.jpg",
+      "/images/oct3.jpg",
+      "/images/oct4.jpg",
+      "/images/oct5.jpg",
+      "/images/oct6.jpg",
     ],
     sponsors: [],
     status: "upcoming",
@@ -168,6 +129,29 @@ export const mockFestivals: Festival[] = [
       title: "Oktoberfest 2026 | Concord, NC",
       description:
         "Join Oktoberfest on Sept 25-27, 2026 for food, music, and seasonal celebration in Concord.",
+    },
+  },
+  {
+    slug: "christmas-tree-lighting-2026",
+    name: "Christmas Tree Lighting",
+    tagline: "More information coming soon",
+    category: "seasonal",
+    cityState: "Cabarrus County, NC",
+    heroImage: "/images/christmas-hero.svg",
+    cardImage: "/images/christmas-card.svg",
+    shortDescription: "More information coming soon!",
+    longDescription:
+      "More information coming soon! Stay tuned as we share details on this holiday celebration in Cabarrus County.",
+    highlights: [],
+    schedule: [],
+    faqs: [],
+    gallery: [],
+    sponsors: [],
+    status: "upcoming",
+    seo: {
+      title: "Christmas Tree Lighting 2026 | Concord, NC",
+      description:
+        "More information coming soon for the Christmas Tree Lighting in Concord, NC.",
     },
   },
 ];

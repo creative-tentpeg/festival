@@ -2,9 +2,10 @@ import { cms } from "@/lib/cms/client";
 import { formatDateRange, formatTimeRange } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, Facebook, Instagram } from "lucide-react";
 import { Metadata } from "next";
 import { NewsletterSignupForm } from "@/components/shared/NewsletterSignupForm";
+import { GalleryLightbox } from "@/components/shared/GalleryLightbox";
 
 interface Props {
   params: { slug: string } | Promise<{ slug: string }>;
@@ -46,20 +47,21 @@ export default async function FestivalDetailPage({ params }: Props) {
     notFound();
   }
 
+  const hasDate = Boolean(festival.startDate && festival.endDate);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Event",
     name: festival.name,
-    startDate: festival.startDate,
-    endDate: festival.endDate,
+    ...(hasDate && { startDate: festival.startDate, endDate: festival.endDate }),
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     location: {
       "@type": "Place",
-      name: festival.venueName,
+      name: festival.venueName ?? festival.cityState,
       address: {
         "@type": "PostalAddress",
-        streetAddress: festival.venueAddress,
+        ...(festival.venueAddress && { streetAddress: festival.venueAddress }),
         addressLocality: festival.cityState.split(",")[0].trim(),
         addressRegion: "NC",
         addressCountry: "US",
@@ -72,13 +74,15 @@ export default async function FestivalDetailPage({ params }: Props) {
   const toGoogleDate = (iso: string) =>
     new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
 
-  const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-    festival.name,
-  )}&dates=${toGoogleDate(festival.startDate)}/${toGoogleDate(
-    festival.endDate,
-  )}&details=${encodeURIComponent(
-    festival.shortDescription,
-  )}&location=${encodeURIComponent(`${festival.venueName}, ${festival.cityState}`)}`;
+  const calendarUrl = hasDate
+    ? `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+        festival.name,
+      )}&dates=${toGoogleDate(festival.startDate!)}/${toGoogleDate(
+        festival.endDate!,
+      )}&details=${encodeURIComponent(
+        festival.shortDescription,
+      )}&location=${encodeURIComponent(`${festival.venueName ?? ""}, ${festival.cityState}`)}`
+    : null;
   const appleCalendarUrl = `/api/calendar/${festival.slug}`;
   const showStayConnectedSection =
     festival.slug === "july-4th-anniversary-festival" ||
@@ -119,11 +123,13 @@ export default async function FestivalDetailPage({ params }: Props) {
           priority
         />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 z-20 flex justify-center px-4 pt-44 pb-20 md:pt-40 md:pb-16">
+        <div className="absolute inset-0 z-20 flex items-center justify-center px-4 py-20">
           <div className="text-center text-white px-4 max-w-4xl">
-            <span className="inline-flex px-3 py-1 bg-festival-green rounded-full text-sm font-semibold mb-4 uppercase tracking-wider text-white">
-              {festival.category}
-            </span>
+            {festival.slug !== "oktoberfest-2026" && (
+              <span className="inline-flex px-3 py-1 bg-festival-green rounded-full text-sm font-semibold mb-4 uppercase tracking-wider text-white">
+                {festival.category}
+              </span>
+            )}
             <h1 className="text-4xl md:text-6xl font-bold mb-2">
               {festival.name}
             </h1>
@@ -135,18 +141,54 @@ export default async function FestivalDetailPage({ params }: Props) {
               <div className="flex items-center">
                 <Calendar className="w-6 h-6 mr-2 text-festival-green" />
                 <span>
-                  {formatDateRange(festival.startDate, festival.endDate)}
-                  {" | "}
-                  {formatTimeRange(festival.startDate, festival.endDate)}
+                  {festival.startDate && festival.endDate
+                    ? festival.slug === "oktoberfest-2026"
+                      ? formatDateRange(festival.startDate, festival.endDate)
+                      : `${formatDateRange(festival.startDate, festival.endDate)} | ${formatTimeRange(festival.startDate, festival.endDate)}`
+                    : "Coming Soon"}
                 </span>
               </div>
               <div className="flex items-center">
                 <MapPin className="w-6 h-6 mr-2 text-festival-green" />
                 <span>
-                  {festival.venueName}, {festival.cityState}
+                  {festival.venueName ? `${festival.venueName}, ` : ""}
+                  {festival.cityState}
                 </span>
               </div>
             </div>
+
+            {festival.slug === "oktoberfest-2026" && (
+              <>
+                <p className="mt-4 text-base md:text-lg text-gray-200">
+                  Friday: 4pm-11pm | Saturday: 11am-11pm | Sunday: 11am-11pm
+                </p>
+                <div className="mt-6 flex flex-col items-center gap-3">
+                  <p className="text-base md:text-lg text-gray-200">
+                    Follow us on FB and IG for regular updates!
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href="https://www.facebook.com/profile.php?id=61580074512466"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+                    >
+                      <Facebook className="w-5 h-5 text-white" />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/cabarrusceltic/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+                    >
+                      <Instagram className="w-5 h-5 text-white" />
+                    </a>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -209,21 +251,7 @@ export default async function FestivalDetailPage({ params }: Props) {
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
                     Gallery
                   </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {festival.gallery.map((img, idx) => (
-                      <div
-                        key={idx}
-                        className="relative aspect-[4/3] rounded-lg overflow-hidden"
-                      >
-                        <Image
-                          src={img}
-                          alt={`Gallery image ${idx + 1}`}
-                          fill
-                          className="object-cover hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                    ))}
-                  </div>
+                  <GalleryLightbox images={festival.gallery} alt={festival.name} />
                 </section>
               )}
 
@@ -232,19 +260,81 @@ export default async function FestivalDetailPage({ params }: Props) {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   Event Details
                 </h3>
+                {festival.slug === "oktoberfest-2026" && (
+                  <div className="prose prose-lg max-w-none text-gray-600 space-y-4 mb-6">
+                    <p>
+                      Saturday and Sunday, the celebration is in full swing!
+                      Stroll through rows of vendors offering everything
+                      from handcrafted goods to authentic German fare,
+                      while live music fills the air from morning to
+                      night. Bring the whole family. Our Kids Zone is
+                      packed with activities and games that will keep
+                      little ones laughing all day long. Whether you come
+                      for the food, the music, or simply the joy of
+                      gathering with neighbors, there&apos;s something
+                      around every corner.
+                    </p>
+                    <p>
+                      Oktoberfest is more than a festival — it&apos;s a
+                      celebration of the German roots that helped shape
+                      Cabarrus County into the community we love today.
+                      For three days, we honor that heritage the best way
+                      we know how: with great music, great food, and even
+                      better company. So mark your calendar for September
+                      25–27, gather your friends and family, and come
+                      make memories with us. Prost!
+                    </p>
+                  </div>
+                )}
+                <div className="mb-6 flex flex-col sm:flex-row gap-3">
+                  <a
+                    href={sponsorUrl}
+                    target={sponsorUrl.startsWith("http") ? "_blank" : undefined}
+                    rel={sponsorUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
+                  >
+                    Sponsor This Event
+                  </a>
+                  {showVendorButton && (
+                    <a
+                      href={vendorUrl}
+                      target={vendorUrl.startsWith("http") ? "_blank" : undefined}
+                      rel={vendorUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
+                    >
+                      Be a Vendor
+                    </a>
+                  )}
+                </div>
+                <hr className="border-gray-200 mb-6" />
                 <div className="space-y-4">
+                  <h4 className="text-lg font-semibold text-gray-900">
+                    Date &amp; Location
+                  </h4>
                   <div className="space-y-2 text-gray-700">
-                    <p>
-                      <span className="font-semibold text-gray-900">Date:</span>{" "}
-                      {formatDateRange(festival.startDate, festival.endDate)}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-gray-900">Time:</span>{" "}
-                      {formatTimeRange(festival.startDate, festival.endDate)}
-                    </p>
+                    {festival.startDate && festival.endDate ? (
+                      <>
+                        <p>
+                          <span className="font-semibold text-gray-900">Date:</span>{" "}
+                          {formatDateRange(festival.startDate, festival.endDate)}
+                        </p>
+                        <p>
+                          <span className="font-semibold text-gray-900">Time:</span>{" "}
+                          {festival.slug === "oktoberfest-2026"
+                            ? "Friday: 4pm-11pm | Saturday: 11am-11pm | Sunday: 11am-11pm"
+                            : formatTimeRange(festival.startDate, festival.endDate)}
+                        </p>
+                      </>
+                    ) : (
+                      <p>
+                        <span className="font-semibold text-gray-900">Date:</span>{" "}
+                        Coming Soon
+                      </p>
+                    )}
                     <p>
                       <span className="font-semibold text-gray-900">Location:</span>{" "}
-                      {festival.venueName}, {festival.cityState}
+                      {festival.venueName ? `${festival.venueName}, ` : ""}
+                      {festival.cityState}
                     </p>
                   </div>
                   {festival.ticketUrl && (
@@ -257,39 +347,41 @@ export default async function FestivalDetailPage({ params }: Props) {
                       Get Tickets
                     </a>
                   )}
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <a
-                      href={calendarUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        viewBox="0 0 24 24"
-                        className="w-5 h-5 mr-2 fill-current"
+                  {hasDate && (
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <a
+                        href={calendarUrl!}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
                       >
-                        <path d="M21 12.23c0-.71-.06-1.39-.18-2.04H12v3.86h5.04a4.32 4.32 0 0 1-1.87 2.84v2.36h3.03c1.77-1.63 2.8-4.04 2.8-7.02Z" />
-                        <path d="M12 21.5c2.53 0 4.65-.84 6.2-2.27l-3.03-2.36c-.84.57-1.92.91-3.17.91-2.44 0-4.5-1.65-5.24-3.87H3.63v2.44A9.36 9.36 0 0 0 12 21.5Z" />
-                        <path d="M6.76 13.91a5.62 5.62 0 0 1 0-3.58V7.89H3.63a9.5 9.5 0 0 0 0 8.46l3.13-2.44Z" />
-                        <path d="M12 6.45c1.38 0 2.61.47 3.58 1.4l2.68-2.68C16.64 3.69 14.52 2.86 12 2.86A9.36 9.36 0 0 0 3.63 7.89l3.13 2.44c.74-2.22 2.8-3.88 5.24-3.88Z" />
-                      </svg>
-                      Save to Google Calendar
-                    </a>
-                    <a
-                      href={appleCalendarUrl}
-                      className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        viewBox="0 0 24 24"
-                        className="w-5 h-5 mr-2 fill-current"
+                        <svg
+                          aria-hidden="true"
+                          viewBox="0 0 24 24"
+                          className="w-5 h-5 mr-2 fill-current"
+                        >
+                          <path d="M21 12.23c0-.71-.06-1.39-.18-2.04H12v3.86h5.04a4.32 4.32 0 0 1-1.87 2.84v2.36h3.03c1.77-1.63 2.8-4.04 2.8-7.02Z" />
+                          <path d="M12 21.5c2.53 0 4.65-.84 6.2-2.27l-3.03-2.36c-.84.57-1.92.91-3.17.91-2.44 0-4.5-1.65-5.24-3.87H3.63v2.44A9.36 9.36 0 0 0 12 21.5Z" />
+                          <path d="M6.76 13.91a5.62 5.62 0 0 1 0-3.58V7.89H3.63a9.5 9.5 0 0 0 0 8.46l3.13-2.44Z" />
+                          <path d="M12 6.45c1.38 0 2.61.47 3.58 1.4l2.68-2.68C16.64 3.69 14.52 2.86 12 2.86A9.36 9.36 0 0 0 3.63 7.89l3.13 2.44c.74-2.22 2.8-3.88 5.24-3.88Z" />
+                        </svg>
+                        Save to Google Calendar
+                      </a>
+                      <a
+                        href={appleCalendarUrl}
+                        className="inline-flex items-center justify-center px-4 py-3 bg-linear-to-r from-festival-green to-festival-green-dark text-white font-bold rounded-lg hover:from-festival-green-dark hover:to-festival-green-darker transition-colors"
                       >
-                        <path d="M16.37 1.43c0 1.14-.42 2.24-1.16 3.04-.78.84-2.07 1.48-3.2 1.43-.14-1.11.42-2.27 1.14-3.05.79-.88 2.15-1.51 3.22-1.42Zm3.8 16.61c-.56 1.25-.82 1.8-1.53 2.9-.99 1.53-2.38 3.43-4.1 3.45-1.53.02-1.93-1-4-1-2.07 0-2.51 1.02-4.03.98-1.72-.03-3.04-1.74-4.03-3.27C-.25 16.82-1.6 8.96 2.23 5.62 3.58 4.43 5.3 3.73 6.92 3.73c1.65 0 2.69 1.03 4.05 1.03 1.32 0 2.13-1.03 4.03-1.03 1.45 0 2.97.79 4.31 2.15-3.57 1.97-2.99 7.08.86 8.7Z" />
-                      </svg>
-                      Save to Apple Calendar
-                    </a>
-                  </div>
+                        <svg
+                          aria-hidden="true"
+                          viewBox="0 0 24 24"
+                          className="w-5 h-5 mr-2 fill-current"
+                        >
+                          <path d="M16.37 1.43c0 1.14-.42 2.24-1.16 3.04-.78.84-2.07 1.48-3.2 1.43-.14-1.11.42-2.27 1.14-3.05.79-.88 2.15-1.51 3.22-1.42Zm3.8 16.61c-.56 1.25-.82 1.8-1.53 2.9-.99 1.53-2.38 3.43-4.1 3.45-1.53.02-1.93-1-4-1-2.07 0-2.51 1.02-4.03.98-1.72-.03-3.04-1.74-4.03-3.27C-.25 16.82-1.6 8.96 2.23 5.62 3.58 4.43 5.3 3.73 6.92 3.73c1.65 0 2.69 1.03 4.05 1.03 1.32 0 2.13-1.03 4.03-1.03 1.45 0 2.97.79 4.31 2.15-3.57 1.97-2.99 7.08.86 8.7Z" />
+                        </svg>
+                        Save to Apple Calendar
+                      </a>
+                    </div>
+                  )}
                 </div>
               </section>
 

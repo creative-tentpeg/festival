@@ -10,14 +10,14 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Cabarrus Festivals",
   description:
-    "Discover upcoming festivals in Cabarrus County, including July 4th celebrations, Oktoberfest, and more.",
+    "Discover upcoming festivals in Cabarrus County, including Oktoberfest and more.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Cabarrus Festivals",
     description:
-      "Discover upcoming festivals in Cabarrus County, including July 4th celebrations, Oktoberfest, and more.",
+      "Discover upcoming festivals in Cabarrus County, including Oktoberfest and more.",
     url: "https://cabarrusfestivals.com",
     images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
   },
@@ -25,16 +25,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cabarrus Festivals",
     description:
-      "Discover upcoming festivals in Cabarrus County, including July 4th celebrations, Oktoberfest, and more.",
+      "Discover upcoming festivals in Cabarrus County, including Oktoberfest and more.",
     images: ["https://i.imgur.com/Tg5iY0r.jpeg"],
   },
 };
 
 export default async function Home() {
   const upcomingFestivals = await cms.getUpcomingFestivals(3);
-  const nextFestivalForTimer =
-    (await cms.getFestivalBySlug("july-4th-anniversary-festival")) ??
-    upcomingFestivals[0];
+  const nextFestivalForTimer = upcomingFestivals.find((f) => f.startDate);
 
   return (
     <div className="bg-background min-h-screen">
@@ -86,7 +84,7 @@ export default async function Home() {
           </div>
         </div>
 
-        {nextFestivalForTimer && (
+        {nextFestivalForTimer?.startDate && (
           <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-30 px-4 w-full flex justify-center">
             <NextFestivalTimer
               festivalName={nextFestivalForTimer.name}

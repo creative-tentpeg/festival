@@ -25,7 +25,7 @@ export async function GET(
   const { slug } = await Promise.resolve(context.params);
   const festival = await cms.getFestivalBySlug(slug);
 
-  if (!festival) {
+  if (!festival || !festival.startDate || !festival.endDate) {
     return new NextResponse("Event not found", { status: 404 });
   }
 
@@ -35,7 +35,7 @@ export async function GET(
   const dtend = toICSDate(festival.endDate);
   const summary = escapeICS(festival.name);
   const description = escapeICS(festival.shortDescription);
-  const location = escapeICS(`${festival.venueName}, ${festival.cityState}`);
+  const location = escapeICS(`${festival.venueName ?? ""}, ${festival.cityState}`);
 
   const ics = [
     "BEGIN:VCALENDAR",

@@ -53,15 +53,16 @@ export function FestivalCard({ festival }: FestivalCardProps) {
           <div className="flex items-center">
             <Calendar className="w-4 h-4 mr-2 text-festival-green" />
             <span>
-              {formatDateRange(festival.startDate, festival.endDate)}
-              {" | "}
-              {formatTimeRange(festival.startDate, festival.endDate)}
+              {festival.startDate && festival.endDate
+                ? `${formatDateRange(festival.startDate, festival.endDate)} | ${formatTimeRange(festival.startDate, festival.endDate)}`
+                : "Coming Soon"}
             </span>
           </div>
           <div className="flex items-center">
             <MapPin className="w-4 h-4 mr-2 text-festival-green" />
             <span>
-              {festival.venueName}, {festival.cityState}
+              {festival.venueName ? `${festival.venueName}, ` : ""}
+              {festival.cityState}
             </span>
           </div>
         </div>
