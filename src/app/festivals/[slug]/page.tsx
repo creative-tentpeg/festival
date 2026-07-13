@@ -160,7 +160,7 @@ export default async function FestivalDetailPage({ params }: Props) {
             {festival.slug === "oktoberfest-2026" && (
               <>
                 <p className="mt-4 text-base md:text-lg text-gray-200">
-                  Friday: 4pm-11pm | Saturday: 11am-11pm | Sunday: 11am-11pm
+                  Friday: 4pm-11pm | Saturday: 11am-11pm | Sunday: 11am-8pm
                 </p>
                 <div className="mt-6 flex flex-col items-center gap-3">
                   <p className="text-base md:text-lg text-gray-200">
@@ -225,35 +225,27 @@ export default async function FestivalDetailPage({ params }: Props) {
                   )}
                 </div>
 
-                {festival.highlights.length > 0 && (
+                {(festival.highlights.length > 0 || festival.highlightsTitle) && (
                   <div className="mt-8">
-                    <h3 className="text-xl font-semibold mb-3">
+                    <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-center">
                       {festival.highlightsTitle ?? "Highlights"}
                     </h3>
-                    <ul className="flex flex-wrap gap-2">
-                      {festival.highlights.map((highlight, idx) => (
-                        <li
-                          key={idx}
-                          className="inline-flex items-center text-gray-700 bg-festival-green/10 px-2 py-1 rounded-md"
-                        >
-                          <span className="w-1 h-1 bg-festival-green rounded-full mr-2" />
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
+                    {festival.highlights.length > 0 && (
+                      <ul className="flex flex-wrap gap-2">
+                        {festival.highlights.map((highlight, idx) => (
+                          <li
+                            key={idx}
+                            className="inline-flex items-center text-gray-700 bg-festival-green/10 px-2 py-1 rounded-md"
+                          >
+                            <span className="w-1 h-1 bg-festival-green rounded-full mr-2" />
+                            {highlight}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 )}
               </section>
-
-              {/* Gallery */}
-              {festival.gallery.length > 0 && (
-                <section className="">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Gallery
-                  </h2>
-                  <GalleryLightbox images={festival.gallery} alt={festival.name} />
-                </section>
-              )}
 
               {/* Event Details */}
               <section className="bg-gray-50 p-6 rounded-xl border border-gray-100">
@@ -321,7 +313,7 @@ export default async function FestivalDetailPage({ params }: Props) {
                         <p>
                           <span className="font-semibold text-gray-900">Time:</span>{" "}
                           {festival.slug === "oktoberfest-2026"
-                            ? "Friday: 4pm-11pm | Saturday: 11am-11pm | Sunday: 11am-11pm"
+                            ? "Friday: 4pm-11pm | Saturday: 11am-11pm | Sunday: 11am-8pm"
                             : formatTimeRange(festival.startDate, festival.endDate)}
                         </p>
                       </>
@@ -409,17 +401,49 @@ export default async function FestivalDetailPage({ params }: Props) {
               <section className="">
                 <h3 className="text-xl font-bold mb-4">Sponsors</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  {festival.sponsors.map((sponsor, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center justify-center p-4 border border-gray-200 rounded-lg h-24 relative"
-                    >
-                      <span className="text-xs font-bold text-gray-400 text-center">
-                        {sponsor.name}
-                      </span>
-                    </div>
-                  ))}
+                  {festival.sponsors.map((sponsor, idx) => {
+                    const logo = (
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    );
+                    return (
+                      <div
+                        key={idx}
+                        className="flex items-center justify-center p-4 border border-gray-200 rounded-lg h-24 relative"
+                      >
+                        {sponsor.url ? (
+                          <a
+                            href={sponsor.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full h-full"
+                            aria-label={sponsor.name}
+                          >
+                            {logo}
+                          </a>
+                        ) : (
+                          logo
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
+              </section>
+            )}
+
+            {/* Gallery */}
+            {festival.gallery.length > 0 && (
+              <section className="">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  Gallery
+                </h2>
+                <GalleryLightbox images={festival.gallery} alt={festival.name} />
               </section>
             )}
           </div>

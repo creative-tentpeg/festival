@@ -102,13 +102,7 @@ export const mockFestivals: Festival[] = [
       "Raise your stein and join us September 25–27 for a weekend steeped in tradition! Our Oktoberfest celebration kicks off Friday evening at 4 PM, and when the clock strikes five, the ceremonial keg tapping officially opens the festivities in true Bavarian style. It's the moment the whole weekend builds from the first pour, the first cheers, and the beginning of three unforgettable days celebrating the rich German heritage of Cabarrus County.",
     highlightsTitle: "Good beer tastes better with neighbors.",
     officialUrl: "#",
-    highlights: [
-      "Live Entertainment",
-      "Specialty Foods and Drinks",
-      "Local Vendors",
-      "Family-Friendly Atmosphere",
-      "Competitions and Prizes",
-    ],
+    highlights: [],
     schedule: [
       { time: "11:00", title: "Day 1 Opens" },
       { time: "12:00", title: "Music and Vendor Market" },

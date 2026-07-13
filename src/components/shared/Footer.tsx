@@ -51,6 +51,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/sponsorship"
+                  className="text-white/80 hover:text-white transition-colors flex items-center hover:translate-x-1"
+                >
+                  → Sponsorship
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/about"
                   className="text-white/80 hover:text-white transition-colors flex items-center hover:translate-x-1"
                 >
