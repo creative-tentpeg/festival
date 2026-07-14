@@ -10,10 +10,10 @@ import { usePathname, useRouter } from "next/navigation";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/sponsorship", label: "Sponsor a Festival" },
+  { href: "/vendors", label: "Vendors" },
   { href: "/festivals", label: "Festivals" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {

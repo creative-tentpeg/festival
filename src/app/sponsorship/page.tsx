@@ -26,38 +26,39 @@ const benefits = [
 const levels = [
   {
     name: "Gold",
-    price: "$5,000",
+    price: "$2,000",
     note: "Top billing",
     buttonLabel: "Sponsor at Gold",
     featured: true,
     perks: [
-      "Large logo on t-shirts, banners and promotional materials",
-      "Multiple social media posts featuring your business",
-      "Premium booth space at the festival",
-      "Full-page advertisement in the festival program",
+      "Large logo on t-shirts, banners, and promotional materials",
+      "Social media mentions (multiple posts)",
+      "Premium booth space",
+      "Program advertisement (full page)",
     ],
   },
   {
     name: "Silver",
-    price: "$2,500",
+    price: "$1,000",
     buttonLabel: "Sponsor at Silver",
     featured: false,
+    formUrl: "https://form.jotform.com/261375768818170",
     perks: [
       "Medium logo on t-shirts and select materials",
       "Social media shoutouts",
-      "Half-page advertisement in the festival program",
-      "Standard booth space at the festival",
+      "Program advertisement (half page)",
+      "Standard booth space",
     ],
   },
   {
     name: "Bronze",
-    price: "$1,000",
+    price: "$500",
     buttonLabel: "Sponsor at Bronze",
     featured: false,
     perks: [
       "Small logo on select materials",
       "Social media mention",
-      "Business listing in the festival program",
+      "Program listing",
     ],
   },
   {
@@ -243,7 +244,7 @@ export default function SponsorshipPage() {
                 </ul>
 
                 <a
-                  href={sponsorFormUrl}
+                  href={level.formUrl ?? sponsorFormUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-8 inline-flex items-center justify-center rounded-lg bg-linear-to-r from-festival-green to-festival-green-dark px-5 py-3 text-center font-heading font-bold text-white transition-colors hover:from-festival-green-dark hover:to-festival-green-darker"
