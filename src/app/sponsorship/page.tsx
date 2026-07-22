@@ -61,17 +61,6 @@ const levels = [
       "Program listing",
     ],
   },
-  {
-    name: "Friend / Supporter",
-    price: "$500",
-    buttonLabel: "Become a Friend",
-    featured: false,
-    perks: [
-      "Name listing in the festival program",
-      "Thank-you post on social media",
-      "Small business recognition",
-    ],
-  },
 ];
 
 export const metadata: Metadata = {
@@ -203,7 +192,7 @@ export default function SponsorshipPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch max-w-5xl mx-auto">
             {levels.map((level, idx) => (
               <article
                 key={level.name}
